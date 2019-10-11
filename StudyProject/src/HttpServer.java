@@ -23,14 +23,13 @@ public class HttpServer {
 	private boolean shutdown = false;
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		HttpServer httpServer = new HttpServer();
 		httpServer.await();
 	}
 
 	public void await() {
 		ServerSocket serverSocket = null;
-		int port = 8080;
+		int port = 10001;
 
 		try {
 			serverSocket = new ServerSocket(port, 1, InetAddress.getByName("127.0.0.1"));
@@ -62,7 +61,7 @@ public class HttpServer {
 				socket.close();
 				
 				// Shutdown server
-				shutdown = request.getUri().contentEquals(SHUTDOWN_COMMAND);
+				shutdown = request.getUri().equals(SHUTDOWN_COMMAND);
 				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
