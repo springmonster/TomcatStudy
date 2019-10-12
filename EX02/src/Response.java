@@ -91,7 +91,7 @@ public class Response implements ServletResponse {
 
 	@Override
 	public PrintWriter getWriter() throws IOException {
-		writer = new PrintWriter(output);
+		writer = new PrintWriter(output, true);
 		return writer;
 	}
 
