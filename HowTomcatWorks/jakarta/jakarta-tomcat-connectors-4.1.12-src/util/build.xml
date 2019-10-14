@@ -1,0 +1,105 @@
+<project name="tomcat-util" default="build-main" basedir=".">
+
+    <!-- ===================== Initialize Property Values =================== -->
+    <property file="${user.home}/build.properties"/>
+    <property file="build.properties"/>
+    <property file="build.properties.sample"/>
+
+    <property name="tomcat-util.build" value="${basedir}/build"/>
+
+    <property name="jsse.home" location="${base.path}/jsse1.0.2"/>
+    <property name="jsse.lib" location="${jsse.home}/lib"/>
+    <property name="jsse.jar" location="${jsse.lib}/jsse.jar"/>
+    <property name="jnet.jar" location="${jsse.lib}/jnet.jar"/>
+    <property name="jcert.jar" location="${jsse.lib}/jcert.jar"/>
+
+    <property name="puretls.home" location="${base.path}/puretls"/>
+    <property name="puretls.lib" location="${puretls.home}"/>
+    <property name="puretls.jar" location="${puretls.lib}/puretls.jar"/>
+    
+    <property name="commons-logging.jar" location="../lib/commons-logging.jar" />
+    <property name="jmx.jar" location="../lib/mx4j.jar" />
+    
+    <target name="detect">
+        <available property="jsse.present" file="${jsse.jar}"/>
+        <available property="jmx.present" file="${jmx.jar}"/>
+        <available property="puretls.present" file="${puretls.jar}"/>
+        <available property="commons-logging.present" file="${commons-logging.jar}"/>
+    </target>
+
+    <target name="build-prepare" depends="detect">
+        <mkdir dir="${tomcat-util.build}"/>
+	<mkdir dir="${tomcat-util.build}/classes"/>
+	<mkdir dir="${tomcat-util.build}/lib"/>
+    </target>
+
+    <target name="build-main" depends="build-prepare">
+        <echo message="----- Java-utils -----" />
+        <echo message="-- puretls.present = ${puretls.present}" />
+        <echo message="-- jsse.present = ${jsse.present}"/>
+        <echo message="-- commons-logging = ${commons-logging.present}"/>
+        <echo message="-- jmx = ${jmx.present} ${jmx.jar}"/>
+        <javac srcdir="java"
+	       destdir="${tomcat-util.build}/classes"
+	       deprecation="on"
+	       debug="on"
+	       target="1.1"
+	       optimize="off"
+	       verbose="off"
+	       excludes="**/CVS/**">
+            <classpath location="${jmx.jar}" />
+            <classpath location="${jsse.jar}" />
+            <classpath location="${jnet.jar}" />
+            <classpath location="${jcert.jar}" />
+            <classpath location="${puretls.jar}" />
+            <classpath location="${commons-logging.jar}" />
+            <exclude name="**/util/net/JSSE*" unless="jsse.present"/>
+            <exclude name="**/util/log/CommonLogHandler.java" unless="commons-logging.present"/>
+            <exclude name="**/util/net/PureTLS*" unless="puretls.present"/>
+            <exclude name="**/util/mx/*" unless="jmx.present"/>
+	</javac>
+
+	<!-- Copy static resource files -->
+	<copy todir="${tomcat-util.build}/classes">
+	    <fileset dir="java">
+	    	<include name="**/*.properties"/>
+	    </fileset>
+        </copy>
+
+	<!-- Copy static resource files -->
+	<copy todir="${tomcat-util.build}/classes">
+	    <fileset dir="java">
+	    	<include name="**/*.properties"/>
+	    </fileset>
+        </copy>
+
+	<jar jarfile="${tomcat-util.build}/lib/tomcat-util.jar"
+	     basedir="${tomcat-util.build}/classes"
+             manifest="java/tomcat-util.manifest"
+	     />
+
+	<!-- Include a copy of the commons-logging.jar that we built with -->
+	<copy tofile="${tomcat-util.build}/lib/commons-logging.jar"
+	      file="${commons-logging.jar}"/>
+    </target>
+
+    <!-- ================ BUILD: Create Tomcat-Util Javadocs =================== -->
+    <target name="javadoc">
+        <delete dir="${tomcat-util.build}/javadoc"/>
+	<mkdir dir="${tomcat-util.build}/javadoc"/>
+	<javadoc packagenames="org.apache.tomcat.util.*"
+               sourcepath="java"
+                  destdir="${tomcat-util.build}/javadoc"
+                   author="true"
+                  version="true"
+              windowtitle="Tomcat Utilities Documentation"
+                 doctitle="Tomcat Utilities"
+                   bottom="Copyright &#169; 2001 Apache Software Foundation.  All Rights Reserved."
+	/>
+    </target>
+
+
+    <target name="clean">
+        <delete dir="${tomcat-util.build}"/>
+    </target>
+</project>
