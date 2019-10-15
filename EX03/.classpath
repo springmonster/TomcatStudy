@@ -17,7 +17,7 @@
 	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/naming-common.jar"/>
 	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/naming-factory.jar"/>
 	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/naming-resources.jar"/>
-	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/servlet.jar" sourcepath="/EX01"/>
+	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/servlet.jar" sourcepath="D:/TomcatStudy/HowTomcatWorks/lib/servlet.jar"/>
 	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/tomcat-util.jar"/>
 	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/xercesImpl.jar"/>
 	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/xmlParserAPIs.jar"/>
