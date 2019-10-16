@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/commons-beanutils.jar"/>
+	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/commons-collections.jar"/>
+	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/commons-daemon.jar"/>
+	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/commons-digester.jar"/>
+	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/commons-modeler.jar"/>
+	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/jaas.jar"/>
+	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/jakarta-regexp-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/jcert.jar"/>
+	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/jnet.jar"/>
+	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/jsse.jar"/>
+	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/mx4j.jar"/>
+	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/naming-common.jar"/>
+	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/naming-factory.jar"/>
+	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/naming-resources.jar"/>
+	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/servlet.jar" sourcepath="/EX01"/>
+	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/tomcat-util.jar"/>
+	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="D:/TomcatStudy/HowTomcatWorks/lib/xmlParserAPIs.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
