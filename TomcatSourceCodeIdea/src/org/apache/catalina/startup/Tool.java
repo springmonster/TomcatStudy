@@ -77,9 +77,9 @@ import java.util.ArrayList;
  * the following requirements:</p>
  * <ul>
  * <li>Passes the <code>catalina.home</code> system property configured with
- *     the pathname of the Tomcat installation directory.</li>
+ * the pathname of the Tomcat installation directory.</li>
  * <li>Sets the system classpath to include <code>bootstrap.jar</code> and
- *     <code>$JAVA_HOME/lib/tools.jar</code>.</li>
+ * <code>$JAVA_HOME/lib/tools.jar</code>.</li>
  * </ul>
  *
  * <p>The command line to execute the tool looks like:</p>
@@ -91,23 +91,23 @@ import java.util.ArrayList;
  * <p>with the following replacement contents:
  * <ul>
  * <li><strong>${options}</strong> - Command line options for this Tool wrapper.
- *     The following options are supported:
- *     <ul>
- *     <li><em>-ant</em> : Set the <code>ant.home</code> system property
- *         to corresponding to the value of <code>catalina.home</code>
- *         (useful when your command line tool runs Ant).</li>
- *     <li><em>-common</em> : Add <code>common/classes</code> and
- *         <code>common/lib</codE) to the class loader repositories.</li>
- *     <li><em>-debug</em> : Enable debugging messages from this wrapper.</li>
- *     <li><em>-server</em> : Add <code>server/classes</code> and
- *         <code>server/lib</code> to the class loader repositories.</li>
- *     <li><em>-shared</em> : Add <code>shared/classes</code> and
- *         <code>shared/lib</code> to the class loader repositories.</li>
- *     </ul>
+ * The following options are supported:
+ * <ul>
+ * <li><em>-ant</em> : Set the <code>ant.home</code> system property
+ * to corresponding to the value of <code>catalina.home</code>
+ * (useful when your command line tool runs Ant).</li>
+ * <li><em>-common</em> : Add <code>common/classes</code> and
+ * <code>common/lib</codE) to the class loader repositories.</li>
+ * <li><em>-debug</em> : Enable debugging messages from this wrapper.</li>
+ * <li><em>-server</em> : Add <code>server/classes</code> and
+ * <code>server/lib</code> to the class loader repositories.</li>
+ * <li><em>-shared</em> : Add <code>shared/classes</code> and
+ * <code>shared/lib</code> to the class loader repositories.</li>
+ * </ul>
  * <li><strong>${classname}</strong> - Fully qualified Java class name of the
- *     application's main class.</li>
+ * application's main class.</li>
  * <li><strong>${arguments}</strong> - Command line arguments to be passed to
- *     the application's <code>main()</code> method.</li>
+ * the application's <code>main()</code> method.</li>
  * </ul>
  *
  * @author Craig R. McClanahan
@@ -215,27 +215,27 @@ public final class Tool {
             packed.add(new File(catalinaHome, "lib"));
             if (common) {
                 unpacked.add(new File(catalinaHome,
-                                      "common" + File.separator + "classes"));
+                        "common" + File.separator + "classes"));
                 packed.add(new File(catalinaHome,
-                                    "common" + File.separator + "lib"));
+                        "common" + File.separator + "lib"));
             }
             if (server) {
                 unpacked.add(new File(catalinaHome,
-                                      "server" + File.separator + "classes"));
+                        "server" + File.separator + "classes"));
                 packed.add(new File(catalinaHome,
-                                    "server" + File.separator + "lib"));
+                        "server" + File.separator + "lib"));
             }
             if (shared) {
                 unpacked.add(new File(catalinaHome,
-                                      "shared" + File.separator + "classes"));
+                        "shared" + File.separator + "classes"));
                 packed.add(new File(catalinaHome,
-                                    "shared" + File.separator + "lib"));
+                        "shared" + File.separator + "lib"));
             }
             classLoader =
-                ClassLoaderFactory.createClassLoader
-                ((File[]) unpacked.toArray(new File[0]),
-                 (File[]) packed.toArray(new File[0]),
-                 null);
+                    ClassLoaderFactory.createClassLoader
+                            ((File[]) unpacked.toArray(new File[0]),
+                                    (File[]) packed.toArray(new File[0]),
+                                    null);
         } catch (Throwable t) {
             log("Class loader creation threw exception", t);
             System.exit(1);
@@ -301,7 +301,7 @@ public final class Tool {
     /**
      * Log a debugging detail message with an exception.
      *
-     * @param message The message to be logged
+     * @param message   The message to be logged
      * @param exception The exception to be logged
      */
     private static void log(String message, Throwable exception) {

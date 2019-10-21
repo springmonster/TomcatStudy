@@ -65,16 +65,22 @@
 package org.apache.catalina.core;
 
 
+import org.apache.catalina.*;
+import org.apache.catalina.deploy.*;
+import org.apache.catalina.loader.WebappLoader;
+import org.apache.catalina.net.ServerSocketFactory;
+import org.apache.catalina.session.PersistentManager;
+import org.apache.catalina.session.StandardManager;
+import org.apache.catalina.util.LifecycleSupport;
+import org.apache.catalina.util.StringManager;
+import org.apache.commons.beanutils.PropertyUtils;
+
+import javax.naming.directory.DirContext;
 import java.beans.IndexedPropertyDescriptor;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.beans.PropertyDescriptor;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.InputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -83,47 +89,6 @@ import java.sql.Timestamp;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Random;
-
-import javax.naming.directory.DirContext;
-
-import org.apache.commons.beanutils.PropertyUtils;
-
-import org.apache.catalina.Connector;
-import org.apache.catalina.Container;
-import org.apache.catalina.Context;
-import org.apache.catalina.DefaultContext;
-import org.apache.catalina.Engine;
-import org.apache.catalina.Host;
-import org.apache.catalina.Lifecycle;
-import org.apache.catalina.LifecycleException;
-import org.apache.catalina.LifecycleListener;
-import org.apache.catalina.Loader;
-import org.apache.catalina.Logger;
-import org.apache.catalina.Manager;
-import org.apache.catalina.Pipeline;
-import org.apache.catalina.Realm;
-import org.apache.catalina.Server;
-import org.apache.catalina.ServerFactory;
-import org.apache.catalina.Service;
-import org.apache.catalina.Store;
-import org.apache.catalina.Valve;
-import org.apache.catalina.core.StandardEngine;
-import org.apache.catalina.core.StandardHost;
-import org.apache.catalina.deploy.ApplicationParameter;
-import org.apache.catalina.deploy.NamingResources;
-import org.apache.catalina.deploy.ContextEjb;
-import org.apache.catalina.deploy.ContextLocalEjb;
-import org.apache.catalina.deploy.ContextResource;
-import org.apache.catalina.deploy.ContextResourceLink;
-import org.apache.catalina.deploy.ContextEnvironment;
-import org.apache.catalina.deploy.ResourceParams;
-import org.apache.catalina.loader.WebappLoader;
-import org.apache.catalina.net.ServerSocketFactory;
-import org.apache.catalina.session.PersistentManager;
-import org.apache.catalina.session.StandardManager;
-import org.apache.catalina.util.LifecycleSupport;
-import org.apache.catalina.util.StringManager;
-
 
 
 /**
@@ -135,7 +100,7 @@ import org.apache.catalina.util.StringManager;
  */
 
 public final class StandardServer
-    implements Lifecycle, Server {
+        implements Lifecycle, Server {
 
 
     // -------------------------------------------------------------- Constants
@@ -146,17 +111,17 @@ public final class StandardServer
      * be persisted because they are automatically calculated.
      */
     private static String exceptions[][] = {
-        { "org.apache.catalina.core.StandardContext", "available" },
-        { "org.apache.catalina.core.StandardContext", "configured" },
-        { "org.apache.catalina.core.StandardContext", "distributable" },
-        { "org.apache.catalina.core.StandardContext", "name" },
-        { "org.apache.catalina.core.StandardContext", "override" },
-        { "org.apache.catalina.core.StandardContext", "publicId" },
-        { "org.apache.catalina.core.StandardContext", "replaceWelcomeFiles" },
-        { "org.apache.catalina.core.StandardContext", "sessionTimeout" },
-        { "org.apache.catalina.core.StandardContext", "workDir" },
-        { "org.apache.catalina.session.StandardManager", "distributable" },
-        { "org.apache.catalina.session.StandardManager", "entropy" },
+            {"org.apache.catalina.core.StandardContext", "available"},
+            {"org.apache.catalina.core.StandardContext", "configured"},
+            {"org.apache.catalina.core.StandardContext", "distributable"},
+            {"org.apache.catalina.core.StandardContext", "name"},
+            {"org.apache.catalina.core.StandardContext", "override"},
+            {"org.apache.catalina.core.StandardContext", "publicId"},
+            {"org.apache.catalina.core.StandardContext", "replaceWelcomeFiles"},
+            {"org.apache.catalina.core.StandardContext", "sessionTimeout"},
+            {"org.apache.catalina.core.StandardContext", "workDir"},
+            {"org.apache.catalina.session.StandardManager", "distributable"},
+            {"org.apache.catalina.session.StandardManager", "entropy"},
     };
 
 
@@ -164,15 +129,15 @@ public final class StandardServer
      * The set of classes that represent persistable properties.
      */
     private static Class persistables[] = {
-        String.class,
-        Integer.class, Integer.TYPE,
-        Boolean.class, Boolean.TYPE,
-        Byte.class, Byte.TYPE,
-        Character.class, Character.TYPE,
-        Double.class, Double.TYPE,
-        Float.class, Float.TYPE,
-        Long.class, Long.TYPE,
-        Short.class, Short.TYPE,
+            String.class,
+            Integer.class, Integer.TYPE,
+            Boolean.class, Boolean.TYPE,
+            Byte.class, Byte.TYPE,
+            Character.class, Character.TYPE,
+            Double.class, Double.TYPE,
+            Float.class, Float.TYPE,
+            Long.class, Long.TYPE,
+            Short.class, Short.TYPE,
     };
 
 
@@ -182,21 +147,21 @@ public final class StandardServer
      * automatically at startup time.
      */
     private static String skippables[] = {
-        "org.apache.catalina.authenticator.BasicAuthenticator",
-        "org.apache.catalina.authenticator.DigestAuthenticator",
-        "org.apache.catalina.authenticator.FormAuthenticator",
-        "org.apache.catalina.authenticator.NonLoginAuthenticator",
-        "org.apache.catalina.authenticator.SSLAuthenticator",
-        "org.apache.catalina.core.NamingContextListener",
-        "org.apache.catalina.core.StandardContextValve",
-        "org.apache.catalina.core.StandardEngineValve",
-        "org.apache.catalina.core.StandardHostValve",
-        "org.apache.catalina.startup.ContextConfig",
-        "org.apache.catalina.startup.EngineConfig",
-        "org.apache.catalina.startup.HostConfig",
-        "org.apache.catalina.valves.CertificatesValve",
-        "org.apache.catalina.valves.ErrorDispatcherValve",
-        "org.apache.catalina.valves.ErrorReportValve",
+            "org.apache.catalina.authenticator.BasicAuthenticator",
+            "org.apache.catalina.authenticator.DigestAuthenticator",
+            "org.apache.catalina.authenticator.FormAuthenticator",
+            "org.apache.catalina.authenticator.NonLoginAuthenticator",
+            "org.apache.catalina.authenticator.SSLAuthenticator",
+            "org.apache.catalina.core.NamingContextListener",
+            "org.apache.catalina.core.StandardContextValve",
+            "org.apache.catalina.core.StandardEngineValve",
+            "org.apache.catalina.core.StandardHostValve",
+            "org.apache.catalina.startup.ContextConfig",
+            "org.apache.catalina.startup.EngineConfig",
+            "org.apache.catalina.startup.HostConfig",
+            "org.apache.catalina.valves.CertificatesValve",
+            "org.apache.catalina.valves.ErrorDispatcherValve",
+            "org.apache.catalina.valves.ErrorReportValve",
     };
 
 
@@ -204,7 +169,7 @@ public final class StandardServer
      * ServerLifecycleListener classname.
      */
     private static String SERVER_LISTENER_CLASS_NAME =
-        "org.apache.catalina.mbeans.ServerLifecycleListener";
+            "org.apache.catalina.mbeans.ServerLifecycleListener";
 
 
     // ------------------------------------------------------------ Constructor
@@ -257,7 +222,7 @@ public final class StandardServer
      * Descriptive information about this Server implementation.
      */
     private static final String info =
-        "org.apache.catalina.core.StandardServer/1.0";
+            "org.apache.catalina.core.StandardServer/1.0";
 
 
     /**
@@ -301,7 +266,7 @@ public final class StandardServer
      * The string manager for this package.
      */
     private static final StringManager sm =
-        StringManager.getManager(Constants.Package);
+            StringManager.getManager(Constants.Package);
 
 
     /**
@@ -363,7 +328,7 @@ public final class StandardServer
      * @param globalNamingContext The new global naming resource context
      */
     public void setGlobalNamingContext
-        (javax.naming.Context globalNamingContext) {
+    (javax.naming.Context globalNamingContext) {
 
         this.globalNamingContext = globalNamingContext;
 
@@ -386,15 +351,15 @@ public final class StandardServer
      * @param namingResources The new global naming resources
      */
     public void setGlobalNamingResources
-        (NamingResources globalNamingResources) {
+    (NamingResources globalNamingResources) {
 
         NamingResources oldGlobalNamingResources =
-            this.globalNamingResources;
+                this.globalNamingResources;
         this.globalNamingResources = globalNamingResources;
         this.globalNamingResources.setContainer(this);
         support.firePropertyChange("globalNamingResources",
-                                   oldGlobalNamingResources,
-                                   this.globalNamingResources);
+                oldGlobalNamingResources,
+                this.globalNamingResources);
 
     }
 
@@ -505,11 +470,11 @@ public final class StandardServer
         ServerSocket serverSocket = null;
         try {
             serverSocket =
-                new ServerSocket(port, 1,
-                                 InetAddress.getByName("127.0.0.1"));
+                    new ServerSocket(port, 1,
+                            InetAddress.getByName("127.0.0.1"));
         } catch (IOException e) {
             System.err.println("StandardServer.await: create[" + port
-                               + "]: " + e);
+                    + "]: " + e);
             e.printStackTrace();
             System.exit(1);
         }
@@ -526,7 +491,7 @@ public final class StandardServer
                 stream = socket.getInputStream();
             } catch (AccessControlException ace) {
                 System.err.println("StandardServer.accept security exception: "
-                                   + ace.getMessage());
+                        + ace.getMessage());
                 continue;
             } catch (IOException e) {
                 System.err.println("StandardServer.await: accept: " + e);
@@ -570,7 +535,7 @@ public final class StandardServer
                 break;
             } else
                 System.err.println("StandardServer.await: Invalid command '" +
-                                   command.toString() + "' received");
+                        command.toString() + "' received");
 
         }
 
@@ -701,12 +666,12 @@ public final class StandardServer
      * Write the configuration information for this entire <code>Server</code>
      * out to the server.xml configuration file.
      *
-     * @exception InstanceNotFoundException if the managed resource object
-     *  cannot be found
-     * @exception MBeanException if the initializer of the object throws
-     *  an exception, or persistence is not supported
-     * @exception RuntimeOperationsException if an exception is reported
-     *  by the persistence mechanism
+     * @throws InstanceNotFoundException  if the managed resource object
+     *                                    cannot be found
+     * @throws MBeanException             if the initializer of the object throws
+     *                                    an exception, or persistence is not supported
+     * @throws RuntimeOperationsException if an exception is reported
+     *                                    by the persistence mechanism
      */
     public synchronized void store() throws Exception {
 
@@ -715,12 +680,12 @@ public final class StandardServer
         File configOld = new File(configFile);
         if (!configOld.isAbsolute()) {
             configOld = new File(System.getProperty("catalina.base"),
-                                 configFile);
+                    configFile);
         }
         File configNew = new File(configFile + ".new");
         if (!configNew.isAbsolute()) {
             configNew = new File(System.getProperty("catalina.base"),
-                                 configFile + ".new");
+                    configFile + ".new");
         }
         String ts = (new Timestamp(System.currentTimeMillis())).toString();
         //        yyyy-mm-dd hh:mm:ss
@@ -736,7 +701,7 @@ public final class StandardServer
         File configSave = new File(configFile + sb.toString());
         if (!configSave.isAbsolute()) {
             configSave = new File(System.getProperty("catalina.base"),
-                                  configFile + sb.toString());
+                    configFile + sb.toString());
         }
 
         // Open an output writer for the new configuration file
@@ -788,13 +753,13 @@ public final class StandardServer
             } else {
                 configSave.renameTo(configOld);
                 throw new IOException("Cannot rename " +
-                                      configNew.getAbsolutePath() + " to " +
-                                      configOld.getAbsolutePath());
+                        configNew.getAbsolutePath() + " to " +
+                        configOld.getAbsolutePath());
             }
         } else {
             throw new IOException("Cannot rename " +
-                                  configOld.getAbsolutePath() + " to " +
-                                  configSave.getAbsolutePath());
+                    configOld.getAbsolutePath() + " to " +
+                    configSave.getAbsolutePath());
         }
 
     }
@@ -803,15 +768,16 @@ public final class StandardServer
     // -------------------------------------------------------- Private Methods
 
 
-    /** Given a string, this method replaces all occurrences of
-     *  '<', '>', '&', and '"'.
-    */
+    /**
+     * Given a string, this method replaces all occurrences of
+     * '<', '>', '&', and '"'.
+     */
 
     private String convertStr(String input) {
 
         StringBuffer filtered = new StringBuffer(input.length());
         char c;
-        for(int i=0; i<input.length(); i++) {
+        for (int i = 0; i < input.length(); i++) {
             c = input.charAt(i);
             if (c == '<') {
                 filtered.append("&lt;");
@@ -827,7 +793,7 @@ public final class StandardServer
                 filtered.append(c);
             }
         }
-            return(filtered.toString());
+        return (filtered.toString());
     }
 
 
@@ -844,10 +810,10 @@ public final class StandardServer
         }
         WebappLoader wloader = (WebappLoader) loader;
         if ((wloader.getCheckInterval() != 15) ||
-            (wloader.getDebug() != 0) ||
-            (wloader.getDelegate() != false) ||
-            !wloader.getLoaderClass().equals
-             ("org.apache.catalina.loader.WebappClassLoader")) {
+                (wloader.getDebug() != 0) ||
+                (wloader.getDelegate() != false) ||
+                !wloader.getLoaderClass().equals
+                        ("org.apache.catalina.loader.WebappClassLoader")) {
             return (false);
         }
         return (true);
@@ -868,11 +834,11 @@ public final class StandardServer
         }
         StandardManager smanager = (StandardManager) manager;
         if ((smanager.getDebug() != 0) ||
-            !smanager.getPathname().equals("SESSIONS.ser") ||
-            (smanager.getCheckInterval() != 60) ||
-            !smanager.getRandomClass().equals("java.security.SecureRandom") ||
-            (smanager.getMaxActiveSessions() != -1) ||
-            !smanager.getAlgorithm().equals("MD5")) {
+                !smanager.getPathname().equals("SESSIONS.ser") ||
+                (smanager.getCheckInterval() != 60) ||
+                !smanager.getRandomClass().equals("java.security.SecureRandom") ||
+                (smanager.getMaxActiveSessions() != -1) ||
+                !smanager.getAlgorithm().equals("MD5")) {
             return (false);
         }
         return (true);
@@ -885,13 +851,13 @@ public final class StandardServer
      * exception that should not be persisted?
      *
      * @param className The class name to check
-     * @param property The property name to check
+     * @param property  The property name to check
      */
     private boolean isException(String className, String property) {
 
         for (int i = 0; i < exceptions.length; i++) {
             if (className.equals(exceptions[i][0]) &&
-                property.equals(exceptions[i][1])) {
+                    property.equals(exceptions[i][1])) {
                 return (true);
             }
         }
@@ -943,9 +909,8 @@ public final class StandardServer
      * Java class name of the bean.
      *
      * @param writer PrintWriter to which we are storing
-     * @param bean Bean whose properties are to be rendered as attributes,
-     *
-     * @exception Exception if an exception occurs while storing
+     * @param bean   Bean whose properties are to be rendered as attributes,
+     * @throws Exception if an exception occurs while storing
      */
     private void storeAttributes(PrintWriter writer,
                                  Object bean) throws Exception {
@@ -958,11 +923,10 @@ public final class StandardServer
     /**
      * Store the relevant attributes of the specified JavaBean.
      *
-     * @param writer PrintWriter to which we are storing
+     * @param writer  PrintWriter to which we are storing
      * @param include Should we include a <code>className</code> attribute?
-     * @param bean Bean whose properties are to be rendered as attributes,
-     *
-     * @exception Exception if an exception occurs while storing
+     * @param bean    Bean whose properties are to be rendered as attributes,
+     * @throws Exception if an exception occurs while storing
      */
     private void storeAttributes(PrintWriter writer, boolean include,
                                  Object bean) throws Exception {
@@ -976,7 +940,7 @@ public final class StandardServer
 
         // Acquire the list of properties for this bean
         PropertyDescriptor descriptors[] =
-            PropertyUtils.getPropertyDescriptors(bean);
+                PropertyUtils.getPropertyDescriptors(bean);
         if (descriptors == null) {
             descriptors = new PropertyDescriptor[0];
         }
@@ -988,13 +952,13 @@ public final class StandardServer
                 continue; // Indexed properties are not persisted
             }
             if (!isPersistable(descriptors[i].getPropertyType()) ||
-                (descriptors[i].getReadMethod() == null) ||
-                (descriptors[i].getWriteMethod() == null)) {
+                    (descriptors[i].getReadMethod() == null) ||
+                    (descriptors[i].getWriteMethod() == null)) {
                 continue; // Must be a read-write primitive or String
             }
             Object value =
-                PropertyUtils.getSimpleProperty(bean,
-                                                descriptors[i].getName());
+                    PropertyUtils.getSimpleProperty(bean,
+                            descriptors[i].getName());
             if (value == null) {
                 continue; // Null values are not persisted
             }
@@ -1018,11 +982,10 @@ public final class StandardServer
     /**
      * Store the specified Connector properties.
      *
-     * @param writer PrintWriter to which we are storing
-     * @param indent Number of spaces to indent this element
+     * @param writer    PrintWriter to which we are storing
+     * @param indent    Number of spaces to indent this element
      * @param connector Object whose properties are being stored
-     *
-     * @exception Exception if an exception occurs while storing
+     * @throws Exception if an exception occurs while storing
      */
     private void storeConnector(PrintWriter writer, int indent,
                                 Connector connector) throws Exception {
@@ -1044,13 +1007,13 @@ public final class StandardServer
         // Store nested <Listener> elements
         if (connector instanceof Lifecycle) {
             LifecycleListener listeners[] =
-                ((Lifecycle) connector).findLifecycleListeners();
+                    ((Lifecycle) connector).findLifecycleListeners();
             if (listeners == null) {
                 listeners = new LifecycleListener[0];
             }
             for (int i = 0; i < listeners.length; i++) {
                 if (listeners[i].getClass().getName().equals
-                    (SERVER_LISTENER_CLASS_NAME)) {
+                        (SERVER_LISTENER_CLASS_NAME)) {
                     continue;
                 }
                 storeListener(writer, indent + 2, listeners[i]);
@@ -1069,11 +1032,10 @@ public final class StandardServer
     /**
      * Store the specified Context properties.
      *
-     * @param writer PrintWriter to which we are storing
-     * @param indent Number of spaces to indent this element
-     * @param context  Object whose properties are being stored
-     *
-     * @exception Exception if an exception occurs while storing
+     * @param writer  PrintWriter to which we are storing
+     * @param indent  Number of spaces to indent this element
+     * @param context Object whose properties are being stored
+     * @throws Exception if an exception occurs while storing
      */
     private void storeContext(PrintWriter writer, int indent,
                               Context context) throws Exception {
@@ -1100,10 +1062,10 @@ public final class StandardServer
         // Store nested <Listener> elements
         if (context instanceof Lifecycle) {
             LifecycleListener listeners[] =
-                ((Lifecycle) context).findLifecycleListeners();
+                    ((Lifecycle) context).findLifecycleListeners();
             for (int i = 0; i < listeners.length; i++) {
                 if (listeners[i].getClass().getName().equals
-                    (SERVER_LISTENER_CLASS_NAME)) {
+                        (SERVER_LISTENER_CLASS_NAME)) {
                     continue;
                 }
                 storeListener(writer, indent + 2, listeners[i]);
@@ -1211,15 +1173,14 @@ public final class StandardServer
     /**
      * Store the specified DefaultContext properties.
      *
-     * @param writer PrintWriter to which we are storing
-     * @param indent Number of spaces to indent this element
-     * @param dcontext  Object whose properties are being stored
-     *
-     * @exception Exception if an exception occurs while storing
+     * @param writer   PrintWriter to which we are storing
+     * @param indent   Number of spaces to indent this element
+     * @param dcontext Object whose properties are being stored
+     * @throws Exception if an exception occurs while storing
      */
     private void storeDefaultContext(PrintWriter writer, int indent,
                                      DefaultContext dcontext)
-        throws Exception {
+            throws Exception {
 
         // Store the beginning of this element
         for (int i = 0; i < indent; i++) {
@@ -1243,10 +1204,10 @@ public final class StandardServer
         // Store nested <Listener> elements
         if (dcontext instanceof Lifecycle) {
             LifecycleListener listeners[] =
-                ((Lifecycle) dcontext).findLifecycleListeners();
+                    ((Lifecycle) dcontext).findLifecycleListeners();
             for (int i = 0; i < listeners.length; i++) {
                 if (listeners[i].getClass().getName().equals
-                    (SERVER_LISTENER_CLASS_NAME)) {
+                        (SERVER_LISTENER_CLASS_NAME)) {
                     continue;
                 }
                 storeListener(writer, indent + 2, listeners[i]);
@@ -1281,7 +1242,7 @@ public final class StandardServer
 
         // Store nested <Parameter> elements
         ApplicationParameter[] appParams =
-            dcontext.findApplicationParameters();
+                dcontext.findApplicationParameters();
         for (int i = 0; i < appParams.length; i++) {
             for (int j = 0; j < indent + 2; j++) {
                 writer.print(' ');
@@ -1361,9 +1322,8 @@ public final class StandardServer
      *
      * @param writer PrintWriter to which we are storing
      * @param indent Number of spaces to indent this element
-     * @param engine  Object whose properties are being stored
-     *
-     * @exception Exception if an exception occurs while storing
+     * @param engine Object whose properties are being stored
+     * @throws Exception if an exception occurs while storing
      */
     private void storeEngine(PrintWriter writer, int indent,
                              Engine engine) throws Exception {
@@ -1379,7 +1339,7 @@ public final class StandardServer
         // Store nested <DefaultContext> element
         if (engine instanceof StandardEngine) {
             DefaultContext dcontext =
-                ((StandardEngine) engine).getDefaultContext();
+                    ((StandardEngine) engine).getDefaultContext();
             if (dcontext != null) {
                 storeDefaultContext(writer, indent + 2, dcontext);
             }
@@ -1400,10 +1360,10 @@ public final class StandardServer
         // Store nested <Listener> elements
         if (engine instanceof Lifecycle) {
             LifecycleListener listeners[] =
-                ((Lifecycle) engine).findLifecycleListeners();
+                    ((Lifecycle) engine).findLifecycleListeners();
             for (int i = 0; i < listeners.length; i++) {
                 if (listeners[i].getClass().getName().equals
-                    (SERVER_LISTENER_CLASS_NAME)) {
+                        (SERVER_LISTENER_CLASS_NAME)) {
                     continue;
                 }
                 storeListener(writer, indent + 2, listeners[i]);
@@ -1454,11 +1414,10 @@ public final class StandardServer
     /**
      * Store the specified ServerSocketFactory properties.
      *
-     * @param writer PrintWriter to which we are storing
-     * @param indent Number of spaces to indent this element
+     * @param writer  PrintWriter to which we are storing
+     * @param indent  Number of spaces to indent this element
      * @param factory Object whose properties are being stored
-     *
-     * @exception Exception if an exception occurs while storing
+     * @throws Exception if an exception occurs while storing
      */
     private void storeFactory(PrintWriter writer, int indent,
                               ServerSocketFactory factory) throws Exception {
@@ -1478,9 +1437,8 @@ public final class StandardServer
      *
      * @param writer PrintWriter to which we are storing
      * @param indent Number of spaces to indent this element
-     * @param host  Object whose properties are being stored
-     *
-     * @exception Exception if an exception occurs while storing
+     * @param host   Object whose properties are being stored
+     * @throws Exception if an exception occurs while storing
      */
     private void storeHost(PrintWriter writer, int indent,
                            Host host) throws Exception {
@@ -1522,13 +1480,13 @@ public final class StandardServer
         // Store nested <DefaultContext> element
         if (host instanceof StandardHost) {
             DefaultContext dcontext =
-                ((StandardHost) host).getDefaultContext();
+                    ((StandardHost) host).getDefaultContext();
             if (dcontext != null) {
                 Container parent = host.getParent();
                 if ((parent != null) &&
-                    (parent instanceof StandardEngine)) {
+                        (parent instanceof StandardEngine)) {
                     DefaultContext pcontext =
-                        ((StandardEngine) parent).getDefaultContext();
+                            ((StandardEngine) parent).getDefaultContext();
                     if (dcontext != pcontext) {
                         storeDefaultContext(writer, indent + 2, dcontext);
                     }
@@ -1539,10 +1497,10 @@ public final class StandardServer
         // Store nested <Listener> elements
         if (host instanceof Lifecycle) {
             LifecycleListener listeners[] =
-                ((Lifecycle) host).findLifecycleListeners();
+                    ((Lifecycle) host).findLifecycleListeners();
             for (int i = 0; i < listeners.length; i++) {
                 if (listeners[i].getClass().getName().equals
-                    (SERVER_LISTENER_CLASS_NAME)) {
+                        (SERVER_LISTENER_CLASS_NAME)) {
                     continue;
                 }
                 storeListener(writer, indent + 2, listeners[i]);
@@ -1593,11 +1551,10 @@ public final class StandardServer
     /**
      * Store the specified Listener properties.
      *
-     * @param writer PrintWriter to which we are storing
-     * @param indent Number of spaces to indent this element
+     * @param writer   PrintWriter to which we are storing
+     * @param indent   Number of spaces to indent this element
      * @param listener Object whose properties are being stored
-     *
-     * @exception Exception if an exception occurs while storing
+     * @throws Exception if an exception occurs while storing
      */
     private void storeListener(PrintWriter writer, int indent,
                                LifecycleListener listener) throws Exception {
@@ -1622,8 +1579,7 @@ public final class StandardServer
      * @param writer PrintWriter to which we are storing
      * @param indent Number of spaces to indent this element
      * @param loader Object whose properties are being stored
-     *
-     * @exception Exception if an exception occurs while storing
+     * @throws Exception if an exception occurs while storing
      */
     private void storeLoader(PrintWriter writer, int indent,
                              Loader loader) throws Exception {
@@ -1647,8 +1603,7 @@ public final class StandardServer
      * @param writer PrintWriter to which we are storing
      * @param indent Number of spaces to indent this element
      * @param logger Object whose properties are being stored
-     *
-     * @exception Exception if an exception occurs while storing
+     * @throws Exception if an exception occurs while storing
      */
     private void storeLogger(PrintWriter writer, int indent,
                              Logger logger) throws Exception {
@@ -1666,11 +1621,10 @@ public final class StandardServer
     /**
      * Store the specified Manager properties.
      *
-     * @param writer PrintWriter to which we are storing
-     * @param indent Number of spaces to indent this element
+     * @param writer  PrintWriter to which we are storing
+     * @param indent  Number of spaces to indent this element
      * @param manager Object whose properties are being stored
-     *
-     * @exception Exception if an exception occurs while storing
+     * @throws Exception if an exception occurs while storing
      */
     private void storeManager(PrintWriter writer, int indent,
                               Manager manager) throws Exception {
@@ -1707,15 +1661,14 @@ public final class StandardServer
     /**
      * Store the specified NamingResources properties.
      *
-     * @param writer PrintWriter to which we are storing
-     * @param indent Number of spaces to indent this element
+     * @param writer    PrintWriter to which we are storing
+     * @param indent    Number of spaces to indent this element
      * @param resources Object whose properties are being stored
-     *
-     * @exception Exception if an exception occurs while storing
+     * @throws Exception if an exception occurs while storing
      */
     private void storeNamingResources(PrintWriter writer, int indent,
                                       NamingResources resources)
-        throws Exception {
+            throws Exception {
 
         // Store nested <Ejb> elements
         ContextEjb[] ejbs = resources.findEjbs();
@@ -1852,9 +1805,8 @@ public final class StandardServer
      *
      * @param writer PrintWriter to which we are storing
      * @param indent Number of spaces to indent this element
-     * @param realm Object whose properties are being stored
-     *
-     * @exception Exception if an exception occurs while storing
+     * @param realm  Object whose properties are being stored
+     * @throws Exception if an exception occurs while storing
      */
     private void storeRealm(PrintWriter writer, int indent,
                             Realm realm) throws Exception {
@@ -1872,11 +1824,10 @@ public final class StandardServer
     /**
      * Store the specified Resources properties.
      *
-     * @param writer PrintWriter to which we are storing
-     * @param indent Number of spaces to indent this element
+     * @param writer    PrintWriter to which we are storing
+     * @param indent    Number of spaces to indent this element
      * @param resources Object whose properties are being stored
-     *
-     * @exception Exception if an exception occurs while storing
+     * @throws Exception if an exception occurs while storing
      */
     private void storeResources(PrintWriter writer, int indent,
                                 DirContext resources) throws Exception {
@@ -1907,8 +1858,7 @@ public final class StandardServer
      * @param writer PrintWriter to which we are storing
      * @param indent Number of spaces to indent this element
      * @param server Object to be stored
-     *
-     * @exception Exception if an exception occurs while storing
+     * @throws Exception if an exception occurs while storing
      */
     private void storeServer(PrintWriter writer, int indent,
                              Server server) throws Exception {
@@ -1925,7 +1875,7 @@ public final class StandardServer
         // Store nested <Listener> elements
         if (server instanceof Lifecycle) {
             LifecycleListener listeners[] =
-                ((Lifecycle) server).findLifecycleListeners();
+                    ((Lifecycle) server).findLifecycleListeners();
             for (int i = 0; i < listeners.length; i++) {
                 storeListener(writer, indent + 2, listeners[i]);
             }
@@ -1933,7 +1883,7 @@ public final class StandardServer
 
         // Store nested <GlobalNamingResources> element
         NamingResources globalNamingResources =
-            server.getGlobalNamingResources();
+                server.getGlobalNamingResources();
         if (globalNamingResources != null) {
             for (int i = 0; i < indent + 2; i++) {
                 writer.print(' ');
@@ -1967,8 +1917,7 @@ public final class StandardServer
      * @param writer PrintWriter to which we are storing
      * @param indent Number of spaces to indent this element
      * @param server Object to be stored
-     *
-     * @exception Exception if an exception occurs while storing
+     * @throws Exception if an exception occurs while storing
      */
     private void storeService(PrintWriter writer, int indent,
                               Service service) throws Exception {
@@ -2002,10 +1951,10 @@ public final class StandardServer
         // Store nested <Listener> elements
         if (service instanceof Lifecycle) {
             LifecycleListener listeners[] =
-                ((Lifecycle) service).findLifecycleListeners();
+                    ((Lifecycle) service).findLifecycleListeners();
             for (int i = 0; i < listeners.length; i++) {
                 if (listeners[i].getClass().getName().equals
-                    (SERVER_LISTENER_CLASS_NAME)) {
+                        (SERVER_LISTENER_CLASS_NAME)) {
                     continue;
                 }
                 storeListener(writer, indent + 2, listeners[i]);
@@ -2026,12 +1975,11 @@ public final class StandardServer
      *
      * @param writer PrintWriter to which we are storing
      * @param indent Number of spaces to indent this element
-     * @param store Object whose properties are being stored
-     *
-     * @exception Exception if an exception occurs while storing
+     * @param store  Object whose properties are being stored
+     * @throws Exception if an exception occurs while storing
      */
     private void storeStore(PrintWriter writer, int indent,
-                             Store store) throws Exception {
+                            Store store) throws Exception {
 
         for (int i = 0; i < indent; i++) {
             writer.print(' ');
@@ -2048,12 +1996,11 @@ public final class StandardServer
      *
      * @param writer PrintWriter to which we are storing
      * @param indent Number of spaces to indent this element
-     * @param valve Object whose properties are being valved
-     *
-     * @exception Exception if an exception occurs while storing
+     * @param valve  Object whose properties are being valved
+     * @throws Exception if an exception occurs while storing
      */
     private void storeValve(PrintWriter writer, int indent,
-                             Valve valve) throws Exception {
+                            Valve valve) throws Exception {
 
         if (isSkippable(valve.getClass().getName())) {
             return;
@@ -2097,7 +2044,7 @@ public final class StandardServer
 
         // Compare the reversed form of the two addresses
         for (int i = 0; i < serverAddr.length; i++) {
-            if (serverAddr[i] != clientAddr[(serverAddr.length-1)-i])
+            if (serverAddr[i] != clientAddr[(serverAddr.length - 1) - i])
                 return (false);
         }
         return (true);
@@ -2113,7 +2060,7 @@ public final class StandardServer
         // Reading the "catalina.useNaming" environment variable
         String useNamingProperty = System.getProperty("catalina.useNaming");
         if ((useNamingProperty != null)
-            && (useNamingProperty.equals("false"))) {
+                && (useNamingProperty.equals("false"))) {
             useNaming = false;
         }
         return useNaming;
@@ -2164,15 +2111,15 @@ public final class StandardServer
      * methods of this component are utilized.  It should also send a
      * LifecycleEvent of type START_EVENT to any registered listeners.
      *
-     * @exception LifecycleException if this component detects a fatal error
-     *  that prevents this component from being used
+     * @throws LifecycleException if this component detects a fatal error
+     *                            that prevents this component from being used
      */
     public void start() throws LifecycleException {
 
         // Validate and update our current component state
         if (started)
             throw new LifecycleException
-                (sm.getString("standardServer.start.started"));
+                    (sm.getString("standardServer.start.started"));
         // Notify our interested LifecycleListeners
         lifecycle.fireLifecycleEvent(BEFORE_START_EVENT, null);
 
@@ -2199,15 +2146,15 @@ public final class StandardServer
      * instance of this component.  It should also send a LifecycleEvent
      * of type STOP_EVENT to any registered listeners.
      *
-     * @exception LifecycleException if this component detects a fatal error
-     *  that needs to be reported
+     * @throws LifecycleException if this component detects a fatal error
+     *                            that needs to be reported
      */
     public void stop() throws LifecycleException {
 
         // Validate and update our current component state
         if (!started)
             throw new LifecycleException
-                (sm.getString("standardServer.stop.notStarted"));
+                    (sm.getString("standardServer.stop.notStarted"));
 
         // Notify our interested LifecycleListeners
         lifecycle.fireLifecycleEvent(BEFORE_STOP_EVENT, null);
@@ -2231,10 +2178,10 @@ public final class StandardServer
      * to bind to restricted ports under Unix operating environments.
      */
     public void initialize()
-    throws LifecycleException {
+            throws LifecycleException {
         if (initialized)
-            throw new LifecycleException (
-                sm.getString("standardServer.initialize.initialized"));
+            throw new LifecycleException(
+                    sm.getString("standardServer.initialize.initialized"));
         initialized = true;
 
         // Initialize our defined Services

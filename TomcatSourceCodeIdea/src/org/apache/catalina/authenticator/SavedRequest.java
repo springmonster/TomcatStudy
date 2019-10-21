@@ -65,11 +65,11 @@
 package org.apache.catalina.authenticator;
 
 
+import javax.servlet.http.Cookie;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Locale;
-import java.util.ArrayList;
-import javax.servlet.http.Cookie;
 
 
 /**
@@ -163,7 +163,6 @@ public final class SavedRequest {
     public void setMethod(String method) {
         this.method = method;
     }
-
 
 
     /**

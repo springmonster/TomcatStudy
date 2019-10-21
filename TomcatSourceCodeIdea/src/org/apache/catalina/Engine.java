@@ -69,9 +69,9 @@ package org.apache.catalina;
  * engine.  It is useful in the following types of scenarios:
  * <ul>
  * <li>You wish to use Interceptors that see every single request processed
- *     by the entire engine.
+ * by the entire engine.
  * <li>You wish to run Catalina in with a standalone HTTP connector, but still
- *     want support for multiple virtual hosts.
+ * want support for multiple virtual hosts.
  * </ul>
  * In general, you would not use an Engine when deploying Catalina connected
  * to a web server (such as Apache), because the Connector will have
@@ -120,7 +120,7 @@ public interface Engine extends Container {
      * Set the JvmRouteId for this engine.
      *
      * @param jvmRouteId the (new) JVM Route ID. Each Engine within a cluster
-     *        must have a unique JVM Route ID.
+     *                   must have a unique JVM Route ID.
      */
     public void setJvmRoute(String jvmRouteId);
 

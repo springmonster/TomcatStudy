@@ -64,8 +64,8 @@
 
 package org.apache.catalina.ssi;
 
-import java.io.ByteArrayOutputStream;
 import javax.servlet.ServletOutputStream;
+import java.io.ByteArrayOutputStream;
 
 /**
  * Class that extends ServletOuputStream, used as a wrapper
@@ -83,7 +83,6 @@ public class ByteArrayServletOutputStream extends ServletOutputStream {
 
     /**
      * Construct a new ServletOutputStream
-     *
      */
     public ByteArrayServletOutputStream() {
         _buf = new ByteArrayOutputStream();
@@ -93,7 +92,7 @@ public class ByteArrayServletOutputStream extends ServletOutputStream {
      * Write our stream to the <code>OutputStream</code> provided.
      *
      * @param out the OutputStream to write this stream to
-     * @exception IOException if an input/output error occurs
+     * @throws IOException if an input/output error occurs
      */
     public byte[] toByteArray() {
         return _buf.toByteArray();

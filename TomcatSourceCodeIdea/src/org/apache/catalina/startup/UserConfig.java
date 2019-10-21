@@ -65,15 +65,11 @@
 package org.apache.catalina.startup;
 
 
+import org.apache.catalina.*;
+import org.apache.catalina.util.StringManager;
+
 import java.io.File;
 import java.util.Enumeration;
-import org.apache.catalina.Context;
-import org.apache.catalina.Host;
-import org.apache.catalina.Lifecycle;
-import org.apache.catalina.LifecycleEvent;
-import org.apache.catalina.LifecycleListener;
-import org.apache.catalina.Logger;
-import org.apache.catalina.util.StringManager;
 
 
 /**
@@ -88,7 +84,7 @@ import org.apache.catalina.util.StringManager;
  */
 
 public final class UserConfig
-    implements LifecycleListener {
+        implements LifecycleListener {
 
 
     // ----------------------------------------------------- Instance Variables
@@ -134,14 +130,14 @@ public final class UserConfig
      * The string resources for this package.
      */
     private static final StringManager sm =
-        StringManager.getManager(Constants.Package);
+            StringManager.getManager(Constants.Package);
 
 
     /**
      * The Java class name of the user database class we should use.
      */
     private String userClass =
-        "org.apache.catalina.startup.PasswdUserDatabase";
+            "org.apache.catalina.startup.PasswdUserDatabase";
 
 
     // ------------------------------------------------------------- Properties
@@ -365,13 +361,13 @@ public final class UserConfig
         try {
             Class clazz = Class.forName(contextClass);
             Context context =
-              (Context) clazz.newInstance();
+                    (Context) clazz.newInstance();
             context.setPath(contextPath);
             context.setDocBase(app.toString());
             if (context instanceof Lifecycle) {
                 clazz = Class.forName(configClass);
                 LifecycleListener listener =
-                  (LifecycleListener) clazz.newInstance();
+                        (LifecycleListener) clazz.newInstance();
                 ((Lifecycle) context).addLifecycleListener(listener);
             }
             host.addChild(context);
@@ -396,7 +392,7 @@ public final class UserConfig
             logger.log("UserConfig[" + host.getName() + "]: " + message);
         else
             System.out.println("UserConfig[" + host.getName() + "]: "
-                               + message);
+                    + message);
 
     }
 
@@ -404,7 +400,7 @@ public final class UserConfig
     /**
      * Log a message on the Logger associated with our Host (if any)
      *
-     * @param message Message to be logged
+     * @param message   Message to be logged
      * @param throwable Associated exception
      */
     private void log(String message, Throwable throwable) {
@@ -414,10 +410,10 @@ public final class UserConfig
             logger = host.getLogger();
         if (logger != null)
             logger.log("UserConfig[" + host.getName() + "] "
-                       + message, throwable);
+                    + message, throwable);
         else {
             System.out.println("UserConfig[" + host.getName() + "]: "
-                               + message);
+                    + message);
             System.out.println("" + throwable);
             throwable.printStackTrace(System.out);
         }

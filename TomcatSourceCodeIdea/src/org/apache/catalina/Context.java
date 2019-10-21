@@ -65,20 +65,10 @@
 package org.apache.catalina;
 
 
-import javax.servlet.ServletContext;
-import org.apache.catalina.deploy.ApplicationParameter;
-import org.apache.catalina.deploy.ContextEjb;
-import org.apache.catalina.deploy.ContextEnvironment;
-import org.apache.catalina.deploy.ContextLocalEjb;
-import org.apache.catalina.deploy.ContextResource;
-import org.apache.catalina.deploy.ContextResourceLink;
-import org.apache.catalina.deploy.ErrorPage;
-import org.apache.catalina.deploy.FilterDef;
-import org.apache.catalina.deploy.FilterMap;
-import org.apache.catalina.deploy.LoginConfig;
-import org.apache.catalina.deploy.NamingResources;
-import org.apache.catalina.deploy.SecurityConstraint;
+import org.apache.catalina.deploy.*;
 import org.apache.catalina.util.CharsetMapper;
+
+import javax.servlet.ServletContext;
 
 
 /**
@@ -121,8 +111,8 @@ public interface Context extends Container {
      * in the order they were specified in the web application deployment
      * descriptor, for this application.
      *
-     * @exception IllegalStateException if this method is called before
-     *  this application has started, or after it has been stopped
+     * @throws IllegalStateException if this method is called before
+     *                               this application has started, or after it has been stopped
      */
     public Object[] getApplicationListeners();
 
@@ -275,7 +265,7 @@ public interface Context extends Container {
 
     /**
      * Set the naming resources for this web application.
-     * 
+     *
      * @param namingResources The new naming resources
      */
     public void setNamingResources(NamingResources namingResources);
@@ -347,7 +337,7 @@ public interface Context extends Container {
 
     /**
      * Set the privileged flag for this web application.
-     * 
+     *
      * @param privileged The new privileged flag
      */
     public void setPrivileged(boolean privileged);
@@ -479,7 +469,7 @@ public interface Context extends Container {
      * the specified extension.
      *
      * @param extension Filename extension being mapped
-     * @param mimeType Corresponding MIME type
+     * @param mimeType  Corresponding MIME type
      */
     public void addMimeMapping(String extension, String mimeType);
 
@@ -488,7 +478,7 @@ public interface Context extends Container {
      * Add a new context initialization parameter, replacing any existing
      * value for the specified name.
      *
-     * @param name Name of the new parameter
+     * @param name  Name of the new parameter
      * @param value Value of the new  parameter
      */
     public void addParameter(String name, String value);
@@ -541,7 +531,7 @@ public interface Context extends Container {
      * the specified pattern.
      *
      * @param pattern URL pattern to be mapped
-     * @param name Name of the corresponding servlet to execute
+     * @param name    Name of the corresponding servlet to execute
      */
     public void addServletMapping(String pattern, String name);
 
@@ -549,7 +539,7 @@ public interface Context extends Container {
     /**
      * Add a JSP tag library for the specified URI.
      *
-     * @param uri URI, relative to the web.xml file, of this tag library
+     * @param uri      URI, relative to the web.xml file, of this tag library
      * @param location Location of the tag library descriptor
      */
     public void addTaglib(String uri, String location);
@@ -659,7 +649,6 @@ public interface Context extends Container {
      * @param exceptionType Exception type to look up
      */
     public ErrorPage findErrorPage(String exceptionType);
-
 
 
     /**
@@ -904,8 +893,8 @@ public interface Context extends Container {
     /**
      * Reload this web application, if reloading is supported.
      *
-     * @exception IllegalStateException if the <code>reloadable</code>
-     *  property is set to <code>false</code>.
+     * @throws IllegalStateException if the <code>reloadable</code>
+     *                               property is set to <code>false</code>.
      */
     public void reload();
 

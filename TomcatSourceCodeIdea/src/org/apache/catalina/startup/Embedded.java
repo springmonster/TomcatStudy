@@ -65,23 +65,7 @@
 package org.apache.catalina.startup;
 
 
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
-import java.net.InetAddress;
-
-import org.apache.tomcat.util.IntrospectionUtils;
-
-import org.apache.catalina.Connector;
-import org.apache.catalina.Container;
-import org.apache.catalina.Context;
-import org.apache.catalina.Engine;
-import org.apache.catalina.Host;
-import org.apache.catalina.Lifecycle;
-import org.apache.catalina.LifecycleException;
-import org.apache.catalina.LifecycleListener;
-import org.apache.catalina.Loader;
-import org.apache.catalina.Logger;
-import org.apache.catalina.Realm;
+import org.apache.catalina.*;
 import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.core.StandardEngine;
 import org.apache.catalina.core.StandardHost;
@@ -92,6 +76,11 @@ import org.apache.catalina.net.ServerSocketFactory;
 import org.apache.catalina.realm.MemoryRealm;
 import org.apache.catalina.util.LifecycleSupport;
 import org.apache.catalina.util.StringManager;
+import org.apache.tomcat.util.IntrospectionUtils;
+
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.net.InetAddress;
 
 
 /**
@@ -102,34 +91,34 @@ import org.apache.catalina.util.StringManager;
  * <ul>
  * <li>Instantiate a new instance of this class.</li>
  * <li>Set the relevant properties of this object itself.  In particular,
- *     you will want to establish the default Logger to be used, as well
- *     as the default Realm if you are using container-managed security.</li>
+ * you will want to establish the default Logger to be used, as well
+ * as the default Realm if you are using container-managed security.</li>
  * <li>Call <code>createEngine()</code> to create an Engine object, and then
- *     call its property setters as desired.</li>
+ * call its property setters as desired.</li>
  * <li>Call <code>createHost()</code> to create at least one virtual Host
- *     associated with the newly created Engine, and then call its property
- *     setters as desired.  After you customize this Host, add it to the
- *     corresponding Engine with <code>engine.addChild(host)</code>.</li>
+ * associated with the newly created Engine, and then call its property
+ * setters as desired.  After you customize this Host, add it to the
+ * corresponding Engine with <code>engine.addChild(host)</code>.</li>
  * <li>Call <code>createContext()</code> to create at least one Context
- *     associated with each newly created Host, and then call its property
- *     setters as desired.  You <strong>SHOULD</strong> create a Context with
- *     a pathname equal to a zero-length string, which will be used to process
- *     all requests not mapped to some other Context.  After you customize
- *     this Context, add it to the corresponding Host with
- *     <code>host.addChild(context)</code>.</li>
+ * associated with each newly created Host, and then call its property
+ * setters as desired.  You <strong>SHOULD</strong> create a Context with
+ * a pathname equal to a zero-length string, which will be used to process
+ * all requests not mapped to some other Context.  After you customize
+ * this Context, add it to the corresponding Host with
+ * <code>host.addChild(context)</code>.</li>
  * <li>Call <code>addEngine()</code> to attach this Engine to the set of
- *     defined Engines for this object.</li>
+ * defined Engines for this object.</li>
  * <li>Call <code>createConnector()</code> to create at least one TCP/IP
- *     connector, and then call its property setters as desired.</li>
+ * connector, and then call its property setters as desired.</li>
  * <li>Call <code>addConnector()</code> to attach this Connector to the set
- *     of defined Connectors for this object.  The added Connector will use
- *     the most recently added Engine to process its received requests.</li>
+ * of defined Connectors for this object.  The added Connector will use
+ * the most recently added Engine to process its received requests.</li>
  * <li>Repeat the above series of steps as often as required (although there
- *     will typically be only one Engine instance created).</li>
+ * will typically be only one Engine instance created).</li>
  * <li>Call <code>start()</code> to initiate normal operations of all the
- *     attached components.</li>
+ * attached components.</li>
  * </ul>
- *
+ * <p>
  * After normal operations have begun, you can add and remove Connectors,
  * Engines, Hosts, and Contexts on the fly.  However, once you have removed
  * a particular component, it must be thrown away -- you can create a new one
@@ -171,9 +160,9 @@ public class Embedded implements Lifecycle {
      * Construct a new instance of this class with specified properties.
      *
      * @param logger Logger implementation to be inherited by all components
-     *  (unless overridden further down the container hierarchy)
-     * @param realm Realm implementation to be inherited by all components
-     *  (unless overridden further down the container hierarchy)
+     *               (unless overridden further down the container hierarchy)
+     * @param realm  Realm implementation to be inherited by all components
+     *               (unless overridden further down the container hierarchy)
      */
     public Embedded(Logger logger, Realm realm) {
 
@@ -216,7 +205,7 @@ public class Embedded implements Lifecycle {
      * Descriptive information about this server implementation.
      */
     protected static final String info =
-        "org.apache.catalina.startup.Embedded/1.0";
+            "org.apache.catalina.startup.Embedded/1.0";
 
 
     /**
@@ -243,7 +232,7 @@ public class Embedded implements Lifecycle {
      * The string manager for this package.
      */
     protected static StringManager sm =
-        StringManager.getManager(Constants.Package);
+            StringManager.getManager(Constants.Package);
 
 
     /**
@@ -253,7 +242,7 @@ public class Embedded implements Lifecycle {
      * will be used instead.
      */
     protected String socketFactory =
-        "org.apache.catalina.net.SSLSocketFactory";
+            "org.apache.catalina.net.SSLSocketFactory";
 
 
     /**
@@ -291,7 +280,7 @@ public class Embedded implements Lifecycle {
         int oldDebug = this.debug;
         this.debug = debug;
         support.firePropertyChange("debug", new Integer(oldDebug),
-                                   new Integer(this.debug));
+                new Integer(this.debug));
 
     }
 
@@ -316,7 +305,7 @@ public class Embedded implements Lifecycle {
         boolean oldUseNaming = this.useNaming;
         this.useNaming = useNaming;
         support.firePropertyChange("useNaming", new Boolean(oldUseNaming),
-                                   new Boolean(this.useNaming));
+                new Boolean(this.useNaming));
 
     }
 
@@ -399,8 +388,7 @@ public class Embedded implements Lifecycle {
      * added Connector will be associated with the most recently added Engine.
      *
      * @param connector The connector to be added
-     *
-     * @exception IllegalStateException if no engines have been added yet
+     * @throws IllegalStateException if no engines have been added yet
      */
     public synchronized void addConnector(Connector connector) {
 
@@ -411,7 +399,7 @@ public class Embedded implements Lifecycle {
         // Make sure we have a Container to send requests to
         if (engines.length < 1)
             throw new IllegalStateException
-                (sm.getString("embedded.noEngines"));
+                    (sm.getString("embedded.noEngines"));
 
         // Configure this Connector as needed
         connector.setContainer(engines[engines.length - 1]);
@@ -484,17 +472,17 @@ public class Embedded implements Lifecycle {
      * based on the specified properties.
      *
      * @param address InetAddress to listen to, or <code>null</code>
-     *  to listen on all address on this server
-     * @param port Port number to listen to
-     * @param secure Should this port be SSL-enabled?
+     *                to listen on all address on this server
+     * @param port    Port number to listen to
+     * @param secure  Should this port be SSL-enabled?
      */
     public Connector createConnector(InetAddress address, int port,
                                      boolean secure) {
 
         if (debug >= 1)
             logger.log("Creating connector for address='" +
-                       ((address == null) ? "ALL" : address.getHostAddress()) +
-                       "' port='" + port + "' secure='" + secure + "'");
+                    ((address == null) ? "ALL" : address.getHostAddress()) +
+                    "' port='" + port + "' secure='" + secure + "'");
 
         String protocol = "http";
         if (secure) {
@@ -513,31 +501,31 @@ public class Embedded implements Lifecycle {
 
         try {
 
-            Class clazz = 
-                Class.forName("org.apache.coyote.tomcat4.CoyoteConnector");
+            Class clazz =
+                    Class.forName("org.apache.coyote.tomcat4.CoyoteConnector");
             connector = (Connector) clazz.newInstance();
 
             if (address != null) {
-                IntrospectionUtils.setProperty(connector, "address", 
-                                               "" + address);
+                IntrospectionUtils.setProperty(connector, "address",
+                        "" + address);
             }
             IntrospectionUtils.setProperty(connector, "port", "" + port);
-            IntrospectionUtils.setProperty(connector, "useURIValidationHack", 
-                                           "" + false);
+            IntrospectionUtils.setProperty(connector, "useURIValidationHack",
+                    "" + false);
 
             if (protocol.equals("ajp")) {
                 IntrospectionUtils.setProperty
-                    (connector, "protocolHandlerClassName",
-                     "org.apache.jk.server.JkCoyoteHandler");
+                        (connector, "protocolHandlerClassName",
+                                "org.apache.jk.server.JkCoyoteHandler");
             } else if (protocol.equals("https")) {
                 connector.setScheme("https");
                 connector.setSecure(true);
                 try {
                     Class serverSocketFactoryClass = Class.forName
-                        ("org.apache.coyote.tomcat4.CoyoteServerSocketFactory");
-                    ServerSocketFactory factory = 
-                        (ServerSocketFactory) 
-                        serverSocketFactoryClass.newInstance();
+                            ("org.apache.coyote.tomcat4.CoyoteServerSocketFactory");
+                    ServerSocketFactory factory =
+                            (ServerSocketFactory)
+                                    serverSocketFactoryClass.newInstance();
                     connector.setFactory(factory);
                 } catch (Exception e) {
                     logger.log("Couldn't load SSL server socket factory.");
@@ -546,7 +534,7 @@ public class Embedded implements Lifecycle {
 
         } catch (Exception e) {
             logger.log("Couldn't create connector.");
-        } 
+        }
 
         return (connector);
 
@@ -568,19 +556,18 @@ public class Embedded implements Lifecycle {
      * which will also cause the Context to be started if the Host has
      * already been started.
      *
-     * @param path Context path of this application ("" for the default
-     *  application for this host, must start with a slash otherwise)
+     * @param path    Context path of this application ("" for the default
+     *                application for this host, must start with a slash otherwise)
      * @param docBase Absolute pathname to the document base directory
-     *  for this web application
-     *
-     * @exception IllegalArgumentException if an invalid parameter
-     *  is specified
+     *                for this web application
+     * @throws IllegalArgumentException if an invalid parameter
+     *                                  is specified
      */
     public Context createContext(String path, String docBase) {
 
         if (debug >= 1)
             logger.log("Creating context '" + path + "' with docBase '" +
-                       docBase + "'");
+                    docBase + "'");
 
         StandardContext context = new StandardContext();
 
@@ -638,18 +625,17 @@ public class Embedded implements Lifecycle {
      *   engine.setDefaultHost(host.getName());
      * </pre>
      *
-     * @param name Canonical name of this virtual host
+     * @param name    Canonical name of this virtual host
      * @param appBase Absolute pathname to the application base directory
-     *  for this virtual host
-     *
-     * @exception IllegalArgumentException if an invalid parameter
-     *  is specified
+     *                for this virtual host
+     * @throws IllegalArgumentException if an invalid parameter
+     *                                  is specified
      */
     public Host createHost(String name, String appBase) {
 
         if (debug >= 1)
             logger.log("Creating host '" + name + "' with appBase '" +
-                       appBase + "'");
+                    appBase + "'");
 
         StandardHost host = new StandardHost();
 
@@ -667,13 +653,13 @@ public class Embedded implements Lifecycle {
      * then attached to a Context, before it is started.
      *
      * @param parent ClassLoader that will be the parent of the one
-     *  created by this Loader
+     *               created by this Loader
      */
     public Loader createLoader(ClassLoader parent) {
 
         if (debug >= 1)
             logger.log("Creating Loader with parent class loader '" +
-                       parent + "'");
+                    parent + "'");
 
         WebappLoader loader = new WebappLoader(parent);
         return (loader);
@@ -882,7 +868,6 @@ public class Embedded implements Lifecycle {
     }
 
 
-
     /**
      * Remove a property change listener from this component.
      *
@@ -911,7 +896,7 @@ public class Embedded implements Lifecycle {
 
 
     /**
-     * Get the lifecycle listeners associated with this lifecycle. If this 
+     * Get the lifecycle listeners associated with this lifecycle. If this
      * Lifecycle has no listeners registered, a zero-length array is returned.
      */
     public LifecycleListener[] findLifecycleListeners() {
@@ -938,8 +923,8 @@ public class Embedded implements Lifecycle {
      * component.  This method should be called after <code>configure()</code>,
      * and before any of the public methods of the component are utilized.
      *
-     * @exception LifecycleException if this component detects a fatal error
-     *  that prevents this component from being used
+     * @throws LifecycleException if this component detects a fatal error
+     *                            that prevents this component from being used
      */
     public void start() throws LifecycleException {
 
@@ -952,20 +937,20 @@ public class Embedded implements Lifecycle {
             String j2eeHome = System.getProperty("com.sun.enterprise.home");
             if (j2eeHome != null)
                 System.setProperty
-                    ("catalina.home",
-                     System.getProperty("com.sun.enterprise.home"));
+                        ("catalina.home",
+                                System.getProperty("com.sun.enterprise.home"));
             else
                 throw new LifecycleException
-                    ("Must set 'catalina.home' system property");
+                        ("Must set 'catalina.home' system property");
         }
         if (System.getProperty("catalina.base") == null)
             System.setProperty("catalina.base",
-                               System.getProperty("catalina.home"));
+                    System.getProperty("catalina.home"));
 
         // Validate and update our current component state
         if (started)
             throw new LifecycleException
-                (sm.getString("embedded.alreadyStarted"));
+                    (sm.getString("embedded.alreadyStarted"));
         lifecycle.fireLifecycleEvent(START_EVENT, null);
         started = true;
 
@@ -976,13 +961,13 @@ public class Embedded implements Lifecycle {
             System.setProperty("catalina.useNaming", "true");
             String value = "org.apache.naming";
             String oldValue =
-                System.getProperty(javax.naming.Context.URL_PKG_PREFIXES);
+                    System.getProperty(javax.naming.Context.URL_PKG_PREFIXES);
             if (oldValue != null) {
                 value = oldValue + ":" + value;
             }
             System.setProperty(javax.naming.Context.URL_PKG_PREFIXES, value);
             System.setProperty(javax.naming.Context.INITIAL_CONTEXT_FACTORY,
-                               "org.apache.naming.java.javaURLContextFactory");
+                    "org.apache.naming.java.javaURLContextFactory");
         }
 
         // Start our defined Engines first
@@ -1006,8 +991,8 @@ public class Embedded implements Lifecycle {
      * component.  This method should be the last one called on a given
      * instance of this component.
      *
-     * @exception LifecycleException if this component detects a fatal error
-     *  that needs to be reported
+     * @throws LifecycleException if this component detects a fatal error
+     *                            that needs to be reported
      */
     public void stop() throws LifecycleException {
 
@@ -1017,7 +1002,7 @@ public class Embedded implements Lifecycle {
         // Validate and update our current component state
         if (!started)
             throw new LifecycleException
-                (sm.getString("embedded.notStarted"));
+                    (sm.getString("embedded.notStarted"));
         lifecycle.fireLifecycleEvent(STOP_EVENT, null);
         started = false;
 
@@ -1055,7 +1040,7 @@ public class Embedded implements Lifecycle {
     public static void main(String args[]) {
 
         Embedded embedded = new Embedded(new SystemOutLogger(),
-                                         new MemoryRealm());
+                new MemoryRealm());
         embedded.setDebug(5);
         embedded.setLogger(new SystemOutLogger());
         String home = System.getProperty("catalina.home");
@@ -1091,7 +1076,7 @@ public class Embedded implements Lifecycle {
         host.addChild(root);
 
         Context examples = embedded.createContext("/examples",
-                                                  home + "/webapps/examples");
+                home + "/webapps/examples");
         customize(examples);    // Special customization for this web-app
         host.addChild(examples);
 
@@ -1107,7 +1092,7 @@ public class Embedded implements Lifecycle {
 
         // Assemble and install a non-secure connector for port 8080
         Connector connector =
-            embedded.createConnector(null, 8080, false);
+                embedded.createConnector(null, 8080, false);
         embedded.addConnector(connector);
 
         // Pause for a while to allow brief testing

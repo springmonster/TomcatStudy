@@ -64,11 +64,7 @@
 
 package org.apache.catalina.core;
 
-import org.apache.catalina.Container;
-import org.apache.catalina.Context;
-import org.apache.catalina.HttpRequest;
-import org.apache.catalina.Mapper;
-import org.apache.catalina.Request;
+import org.apache.catalina.*;
 import org.apache.catalina.util.StringManager;
 
 
@@ -85,7 +81,7 @@ import org.apache.catalina.util.StringManager;
  */
 
 public class StandardHostMapper
-    implements Mapper {
+        implements Mapper {
 
 
     // ----------------------------------------------------- Instance Variables
@@ -107,7 +103,7 @@ public class StandardHostMapper
      * The string manager for this package.
      */
     private static final StringManager sm =
-        StringManager.getManager(Constants.Package);
+            StringManager.getManager(Constants.Package);
 
 
     // ------------------------------------------------------------- Properties
@@ -127,15 +123,14 @@ public class StandardHostMapper
      * Set the Container with which this Mapper is associated.
      *
      * @param container The newly associated Container
-     *
-     * @exception IllegalArgumentException if this Container is not
-     *  acceptable to this Mapper
+     * @throws IllegalArgumentException if this Container is not
+     *                                  acceptable to this Mapper
      */
     public void setContainer(Container container) {
 
         if (!(container instanceof StandardHost))
             throw new IllegalArgumentException
-                (sm.getString("httpHostMapper.container"));
+                    (sm.getString("httpHostMapper.container"));
         host = (StandardHost) container;
 
     }
@@ -172,7 +167,7 @@ public class StandardHostMapper
      * identified, return <code>null</code> instead.
      *
      * @param request Request being processed
-     * @param update Update the Request to reflect the mapping selection?
+     * @param update  Update the Request to reflect the mapping selection?
      */
     public Container map(Request request, boolean update) {
         // Has this request already been mapped?

@@ -65,28 +65,18 @@
 package org.apache.catalina.authenticator;
 
 
-import java.io.IOException;
-import java.security.Principal;
-import java.util.HashMap;
+import org.apache.catalina.*;
+import org.apache.catalina.util.LifecycleSupport;
+import org.apache.catalina.util.StringManager;
+import org.apache.catalina.valves.ValveBase;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.catalina.HttpRequest;
-import org.apache.catalina.HttpResponse;
-import org.apache.catalina.Lifecycle;
-import org.apache.catalina.LifecycleException;
-import org.apache.catalina.LifecycleListener;
-import org.apache.catalina.Logger;
-import org.apache.catalina.Request;
-import org.apache.catalina.Response;
-import org.apache.catalina.Session;
-import org.apache.catalina.SessionEvent;
-import org.apache.catalina.SessionListener;
-import org.apache.catalina.ValveContext;
-import org.apache.catalina.valves.ValveBase;
-import org.apache.catalina.util.LifecycleSupport;
-import org.apache.catalina.util.StringManager;
+import java.io.IOException;
+import java.security.Principal;
+import java.util.HashMap;
 
 
 /**
@@ -97,13 +87,13 @@ import org.apache.catalina.util.StringManager;
  * be met:
  * <ul>
  * <li>This Valve must be configured on the Container that represents a
- *     virtual host (typically an implementation of <code>Host</code>).</li>
+ * virtual host (typically an implementation of <code>Host</code>).</li>
  * <li>The <code>Realm</code> that contains the shared user and role
- *     information must be configured on the same Container (or a higher
- *     one), and not overridden at the web application level.</li>
+ * information must be configured on the same Container (or a higher
+ * one), and not overridden at the web application level.</li>
  * <li>The web applications themselves must use one of the standard
- *     Authenticators found in the
- *     <code>org.apache.catalina.authenticator</code> package.</li>
+ * Authenticators found in the
+ * <code>org.apache.catalina.authenticator</code> package.</li>
  * </ul>
  *
  * @author Craig R. McClanahan
@@ -111,8 +101,8 @@ import org.apache.catalina.util.StringManager;
  */
 
 public class SingleSignOn
-    extends ValveBase
-    implements Lifecycle, SessionListener {
+        extends ValveBase
+        implements Lifecycle, SessionListener {
 
 
     // ----------------------------------------------------- Instance Variables
@@ -135,7 +125,7 @@ public class SingleSignOn
      * Descriptive information about this Valve implementation.
      */
     protected static String info =
-        "org.apache.catalina.authenticator.SingleSignOn";
+            "org.apache.catalina.authenticator.SingleSignOn";
 
 
     /**
@@ -155,7 +145,7 @@ public class SingleSignOn
      * The string manager for this package.
      */
     protected final static StringManager sm =
-        StringManager.getManager(Constants.Package);
+            StringManager.getManager(Constants.Package);
 
 
     /**
@@ -205,7 +195,7 @@ public class SingleSignOn
 
 
     /**
-     * Get the lifecycle listeners associated with this lifecycle. If this 
+     * Get the lifecycle listeners associated with this lifecycle. If this
      * Lifecycle has no listeners registered, a zero-length array is returned.
      */
     public LifecycleListener[] findLifecycleListeners() {
@@ -232,15 +222,15 @@ public class SingleSignOn
      * component.  This method should be called after <code>configure()</code>,
      * and before any of the public methods of the component are utilized.
      *
-     * @exception LifecycleException if this component detects a fatal error
-     *  that prevents this component from being used
+     * @throws LifecycleException if this component detects a fatal error
+     *                            that prevents this component from being used
      */
     public void start() throws LifecycleException {
 
         // Validate and update our current component state
         if (started)
             throw new LifecycleException
-                (sm.getString("authenticator.alreadyStarted"));
+                    (sm.getString("authenticator.alreadyStarted"));
         lifecycle.fireLifecycleEvent(START_EVENT, null);
         started = true;
 
@@ -255,15 +245,15 @@ public class SingleSignOn
      * component.  This method should be the last one called on a given
      * instance of this component.
      *
-     * @exception LifecycleException if this component detects a fatal error
-     *  that needs to be reported
+     * @throws LifecycleException if this component detects a fatal error
+     *                            that needs to be reported
      */
     public void stop() throws LifecycleException {
 
         // Validate and update our current component state
         if (!started)
             throw new LifecycleException
-                (sm.getString("authenticator.notStarted"));
+                    (sm.getString("authenticator.notStarted"));
         lifecycle.fireLifecycleEvent(STOP_EVENT, null);
         started = false;
 
@@ -320,28 +310,27 @@ public class SingleSignOn
     /**
      * Perform single-sign-on support processing for this request.
      *
-     * @param request The servlet request we are processing
+     * @param request  The servlet request we are processing
      * @param response The servlet response we are creating
-     * @param context The valve context used to invoke the next valve
-     *  in the current processing pipeline
-     *
-     * @exception IOException if an input/output error occurs
-     * @exception ServletException if a servlet error occurs
+     * @param context  The valve context used to invoke the next valve
+     *                 in the current processing pipeline
+     * @throws IOException      if an input/output error occurs
+     * @throws ServletException if a servlet error occurs
      */
     public void invoke(Request request, Response response,
                        ValveContext context)
-        throws IOException, ServletException {
+            throws IOException, ServletException {
 
         // If this is not an HTTP request and response, just pass them on
         if (!(request instanceof HttpRequest) ||
-            !(response instanceof HttpResponse)) {
+                !(response instanceof HttpResponse)) {
             context.invokeNext(request, response);
             return;
         }
         HttpServletRequest hreq =
-            (HttpServletRequest) request.getRequest();
+                (HttpServletRequest) request.getRequest();
         HttpServletResponse hres =
-            (HttpServletResponse) response.getResponse();
+                (HttpServletResponse) response.getResponse();
         request.removeNote(Constants.REQ_SSOID_NOTE);
 
         // Has a valid user already been authenticated?
@@ -350,7 +339,7 @@ public class SingleSignOn
         if (hreq.getUserPrincipal() != null) {
             if (debug >= 1)
                 log(" Principal '" + hreq.getUserPrincipal().getName() +
-                    "' has already been authenticated");
+                        "' has already been authenticated");
             context.invokeNext(request, response);
             return;
         }
@@ -382,8 +371,8 @@ public class SingleSignOn
         if (entry != null) {
             if (debug >= 1)
                 log(" Found cached principal '" +
-                    entry.principal.getName() + "' with auth type '" +
-                    entry.authType + "'");
+                        entry.principal.getName() + "' with auth type '" +
+                        entry.authType + "'");
             request.setNote(Constants.REQ_SSOID_NOTE, cookie.getValue());
             ((HttpRequest) request).setAuthType(entry.authType);
             ((HttpRequest) request).setUserPrincipal(entry.principal);
@@ -423,7 +412,7 @@ public class SingleSignOn
      * Associate the specified single sign on identifier with the
      * specified Session.
      *
-     * @param ssoId Single sign on identifier
+     * @param ssoId   Single sign on identifier
      * @param session Session to be associated
      */
     void associate(String ssoId, Session session) {
@@ -484,23 +473,23 @@ public class SingleSignOn
      * Register the specified Principal as being associated with the specified
      * value for the single sign on identifier.
      *
-     * @param ssoId Single sign on identifier to register
+     * @param ssoId     Single sign on identifier to register
      * @param principal Associated user principal that is identified
-     * @param authType Authentication type used to authenticate this
-     *  user principal
-     * @param username Username used to authenticate this user
-     * @param password Password used to authenticate this user
+     * @param authType  Authentication type used to authenticate this
+     *                  user principal
+     * @param username  Username used to authenticate this user
+     * @param password  Password used to authenticate this user
      */
     void register(String ssoId, Principal principal, String authType,
                   String username, String password) {
 
         if (debug >= 1)
             log("Registering sso id '" + ssoId + "' for user '" +
-                principal.getName() + "' with auth type '" + authType + "'");
+                    principal.getName() + "' with auth type '" + authType + "'");
 
         synchronized (cache) {
             cache.put(ssoId, new SingleSignOnEntry(principal, authType,
-                                                   username, password));
+                    username, password));
         }
 
     }
@@ -528,7 +517,7 @@ public class SingleSignOn
     /**
      * Log a message on the Logger associated with our Container (if any).
      *
-     * @param message Message to be logged
+     * @param message   Message to be logged
      * @param throwable Associated exception
      */
     protected void log(String message, Throwable throwable) {

@@ -65,13 +65,7 @@
 package org.apache.catalina.core;
 
 
-import org.apache.catalina.Container;
-import org.apache.catalina.Context;
-import org.apache.catalina.DefaultContext;
-import org.apache.catalina.Engine;
-import org.apache.catalina.Host;
-import org.apache.catalina.LifecycleException;
-import org.apache.catalina.Service;
+import org.apache.catalina.*;
 import org.apache.catalina.util.ServerInfo;
 
 /**
@@ -84,8 +78,8 @@ import org.apache.catalina.util.ServerInfo;
  */
 
 public class StandardEngine
-    extends ContainerBase
-    implements Engine {
+        extends ContainerBase
+        implements Engine {
 
 
     // ----------------------------------------------------------- Constructors
@@ -116,14 +110,14 @@ public class StandardEngine
      * The descriptive information string for this implementation.
      */
     private static final String info =
-        "org.apache.catalina.core.StandardEngine/1.0";
+            "org.apache.catalina.core.StandardEngine/1.0";
 
 
     /**
      * The Java class name of the default Mapper class for this Container.
      */
     private String mapperClass =
-        "org.apache.catalina.core.StandardEngineMapper";
+            "org.apache.catalina.core.StandardEngineMapper";
 
 
     /**
@@ -172,7 +166,7 @@ public class StandardEngine
             this.defaultHost = host.toLowerCase();
         }
         support.firePropertyChange("defaultHost", oldDefaultHost,
-                                   this.defaultHost);
+                this.defaultHost);
 
     }
 
@@ -209,7 +203,7 @@ public class StandardEngine
         DefaultContext oldDefaultContext = this.defaultContext;
         this.defaultContext = defaultContext;
         support.firePropertyChange("defaultContext",
-                                   oldDefaultContext, this.defaultContext);
+                oldDefaultContext, this.defaultContext);
 
     }
 
@@ -242,7 +236,7 @@ public class StandardEngine
         String oldMapperClass = this.mapperClass;
         this.mapperClass = mapperClass;
         support.firePropertyChange("mapperClass",
-                                   oldMapperClass, this.mapperClass);
+                oldMapperClass, this.mapperClass);
 
     }
 
@@ -279,7 +273,7 @@ public class StandardEngine
      */
     public void importDefaultContext(Context context) {
 
-        if ( this.defaultContext != null )
+        if (this.defaultContext != null)
             this.defaultContext.importDefaultContext(context);
 
     }
@@ -295,7 +289,7 @@ public class StandardEngine
 
         if (!(child instanceof Host))
             throw new IllegalArgumentException
-                (sm.getString("standardEngine.notHost"));
+                    (sm.getString("standardEngine.notHost"));
         super.addChild(child);
 
     }
@@ -322,7 +316,7 @@ public class StandardEngine
     public void setParent(Container container) {
 
         throw new IllegalArgumentException
-            (sm.getString("standardEngine.notParent"));
+                (sm.getString("standardEngine.notParent"));
 
     }
 
@@ -330,7 +324,7 @@ public class StandardEngine
     /**
      * Start this Engine component.
      *
-     * @exception LifecycleException if a startup error occurs
+     * @throws LifecycleException if a startup error occurs
      */
     public void start() throws LifecycleException {
 

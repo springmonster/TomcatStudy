@@ -65,26 +65,15 @@
 package org.apache.catalina.valves;
 
 
-import java.io.IOException;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import org.apache.catalina.Context;
-import org.apache.catalina.Globals;
-import org.apache.catalina.HttpRequest;
-import org.apache.catalina.HttpResponse;
-import org.apache.catalina.Logger;
-import org.apache.catalina.Request;
-import org.apache.catalina.Response;
-import org.apache.catalina.ValveContext;
-import org.apache.catalina.Wrapper;
+import org.apache.catalina.*;
 import org.apache.catalina.deploy.ErrorPage;
 import org.apache.catalina.util.RequestUtil;
 import org.apache.catalina.util.StringManager;
+
+import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 
 /**
@@ -102,7 +91,7 @@ import org.apache.catalina.util.StringManager;
  */
 
 public class ErrorDispatcherValve
-    extends ValveBase {
+        extends ValveBase {
 
 
     // ----------------------------------------------------- Instance Variables
@@ -118,14 +107,14 @@ public class ErrorDispatcherValve
      * The descriptive information related to this implementation.
      */
     protected static final String info =
-        "org.apache.catalina.valves.ErrorDispatcherValve/1.0";
+            "org.apache.catalina.valves.ErrorDispatcherValve/1.0";
 
 
     /**
      * The StringManager for this package.
      */
     protected static StringManager sm =
-        StringManager.getManager(Constants.Package);
+            StringManager.getManager(Constants.Package);
 
 
     // ------------------------------------------------------------- Properties
@@ -145,20 +134,19 @@ public class ErrorDispatcherValve
 
 
     /**
-     * Invoke the next Valve in the sequence. When the invoke returns, check 
+     * Invoke the next Valve in the sequence. When the invoke returns, check
      * the response state, and output an error report is necessary.
      *
-     * @param request The servlet request to be processed
+     * @param request  The servlet request to be processed
      * @param response The servlet response to be created
-     * @param context The valve context used to invoke the next valve
-     *  in the current processing pipeline
-     *
-     * @exception IOException if an input/output error occurs
-     * @exception ServletException if a servlet error occurs
+     * @param context  The valve context used to invoke the next valve
+     *                 in the current processing pipeline
+     * @throws IOException      if an input/output error occurs
+     * @throws ServletException if a servlet error occurs
      */
     public void invoke(Request request, Response response,
                        ValveContext context)
-        throws IOException, ServletException {
+            throws IOException, ServletException {
 
         // Perform the request
         context.invokeNext(request, response);
@@ -199,26 +187,26 @@ public class ErrorDispatcherValve
      * exceptions that occur during generation of the exception report are
      * logged and swallowed.
      *
-     * @param request The request being processed
-     * @param response The response being generated
+     * @param request   The request being processed
+     * @param response  The response being generated
      * @param exception The exception that occurred (which possibly wraps
-     *  a root cause exception
+     *                  a root cause exception
      */
     protected void throwable(Request request, Response response,
                              Throwable throwable) {
         Context context = request.getContext();
         if (context == null)
             return;
-        
+
         Throwable realError = throwable;
-        
+
         if (realError instanceof ServletException) {
             realError = ((ServletException) realError).getRootCause();
             if (realError == null) {
                 realError = throwable;
             }
-        } 
-            
+        }
+
         ErrorPage errorPage = findErrorPage(context, realError);
 
         if (errorPage != null) {
@@ -226,21 +214,21 @@ public class ErrorDispatcherValve
             ServletRequest sreq = request.getRequest();
             ServletResponse sresp = response.getResponse();
             sreq.setAttribute
-                (Globals.STATUS_CODE_ATTR,
-                 new Integer(HttpServletResponse.SC_INTERNAL_SERVER_ERROR));
+                    (Globals.STATUS_CODE_ATTR,
+                            new Integer(HttpServletResponse.SC_INTERNAL_SERVER_ERROR));
             sreq.setAttribute(Globals.ERROR_MESSAGE_ATTR,
-                              throwable.getMessage());
+                    throwable.getMessage());
             sreq.setAttribute(Globals.EXCEPTION_ATTR,
-                              realError);
+                    realError);
             Wrapper wrapper = request.getWrapper();
             if (wrapper != null)
                 sreq.setAttribute(Globals.SERVLET_NAME_ATTR,
-                                  wrapper.getName());
+                        wrapper.getName());
             if (sreq instanceof HttpServletRequest)
                 sreq.setAttribute(Globals.EXCEPTION_PAGE_ATTR,
-                                  ((HttpServletRequest) sreq).getRequestURI());
+                        ((HttpServletRequest) sreq).getRequestURI());
             sreq.setAttribute(Globals.EXCEPTION_TYPE_ATTR,
-                              realError.getClass());
+                    realError.getClass());
             if (custom(request, response, errorPage)) {
                 try {
                     sresp.flushBuffer();
@@ -259,7 +247,7 @@ public class ErrorDispatcherValve
      * Response.  Any exceptions that occur during generation of the error
      * report are logged and swallowed.
      *
-     * @param request The request being processed
+     * @param request  The request being processed
      * @param response The response being generated
      */
     protected void status(Request request, Response response) {
@@ -286,16 +274,16 @@ public class ErrorDispatcherValve
             ServletRequest sreq = request.getRequest();
             ServletResponse sresp = response.getResponse();
             sreq.setAttribute(Globals.STATUS_CODE_ATTR,
-                              new Integer(statusCode));
+                    new Integer(statusCode));
             sreq.setAttribute(Globals.ERROR_MESSAGE_ATTR,
-                              message);
+                    message);
             Wrapper wrapper = request.getWrapper();
             if (wrapper != null)
                 sreq.setAttribute(Globals.SERVLET_NAME_ATTR,
-                                  wrapper.getName());
+                        wrapper.getName());
             if (sreq instanceof HttpServletRequest)
                 sreq.setAttribute(Globals.EXCEPTION_PAGE_ATTR,
-                                  ((HttpServletRequest) sreq).getRequestURI());
+                        ((HttpServletRequest) sreq).getRequestURI());
             if (custom(request, response, errorPage)) {
                 try {
                     sresp.flushBuffer();
@@ -314,11 +302,11 @@ public class ErrorDispatcherValve
      * there is such a definition.  If no associated ErrorPage instance is
      * found, return <code>null</code>.
      *
-     * @param context The Context in which to search
+     * @param context   The Context in which to search
      * @param exception The exception for which to find an ErrorPage
      */
     protected static ErrorPage findErrorPage
-        (Context context, Throwable exception) {
+    (Context context, Throwable exception) {
 
         if (exception == null)
             return (null);
@@ -346,8 +334,8 @@ public class ErrorDispatcherValve
      * we successfully utilized the specified error page location, or
      * <code>false</code> if the default error report should be rendered.
      *
-     * @param request The request being processed
-     * @param response The response being generated
+     * @param request   The request being processed
+     * @param response  The response being generated
      * @param errorPage The errorPage directive we are obeying
      */
     protected boolean custom(Request request, Response response,
@@ -363,14 +351,14 @@ public class ErrorDispatcherValve
             return (false);     // NOTE - Nothing we can do generically
         }
         HttpServletRequest hreq =
-            (HttpServletRequest) request.getRequest();
+                (HttpServletRequest) request.getRequest();
         if (!(response instanceof HttpResponse)) {
             if (debug >= 1)
                 log("Not processing an HTTP response --> default handling");
             return (false);     // NOTE - Nothing we can do generically
         }
         HttpServletResponse hres =
-            (HttpServletResponse) response.getResponse();
+                (HttpServletResponse) response.getResponse();
 
         try {
 
@@ -379,9 +367,9 @@ public class ErrorDispatcherValve
 
             // Forward control to the specified location
             ServletContext servletContext =
-                request.getContext().getServletContext();
+                    request.getContext().getServletContext();
             RequestDispatcher rd =
-                servletContext.getRequestDispatcher(errorPage.getLocation());
+                    servletContext.getRequestDispatcher(errorPage.getLocation());
             rd.forward(hreq, hres);
 
             // If we forward, the response is suspended again
@@ -420,7 +408,7 @@ public class ErrorDispatcherValve
     /**
      * Log a message on the Logger associated with our Container (if any).
      *
-     * @param message Message to be logged
+     * @param message   Message to be logged
      * @param throwable Associated exception
      */
     protected void log(String message, Throwable throwable) {

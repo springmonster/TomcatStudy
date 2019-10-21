@@ -65,15 +65,15 @@
 package org.apache.catalina.core;
 
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.Servlet;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.Set;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.Servlet;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 
 /**
  * Facade object which masks the internal <code>ApplicationContext</code>
@@ -84,7 +84,7 @@ import javax.servlet.ServletException;
  */
 
 public final class ApplicationContextFacade
-    implements ServletContext {
+        implements ServletContext {
 
 
     // ----------------------------------------------------------- Constructors
@@ -117,7 +117,7 @@ public final class ApplicationContextFacade
     public ServletContext getContext(String uripath) {
         ServletContext theContext = context.getContext(uripath);
         if ((theContext != null) &&
-            (theContext instanceof ApplicationContext))
+                (theContext instanceof ApplicationContext))
             theContext = ((ApplicationContext) theContext).getFacade();
         return (theContext);
     }
@@ -144,7 +144,7 @@ public final class ApplicationContextFacade
 
 
     public URL getResource(String path)
-        throws MalformedURLException {
+            throws MalformedURLException {
         return context.getResource(path);
     }
 
@@ -165,7 +165,7 @@ public final class ApplicationContextFacade
 
 
     public Servlet getServlet(String name)
-        throws ServletException {
+            throws ServletException {
         return context.getServlet(name);
     }
 

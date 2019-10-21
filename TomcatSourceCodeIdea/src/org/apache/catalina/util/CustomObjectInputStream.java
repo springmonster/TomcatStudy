@@ -64,8 +64,8 @@
 
 package org.apache.catalina.util;
 
-import java.io.InputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectStreamClass;
 
@@ -80,7 +80,7 @@ import java.io.ObjectStreamClass;
  */
 
 public final class CustomObjectInputStream
-    extends ObjectInputStream {
+        extends ObjectInputStream {
 
 
     /**
@@ -93,12 +93,11 @@ public final class CustomObjectInputStream
      *
      * @@param stream The input stream we will read from
      * @@param classLoader The class loader used to instantiate objects
-     *
      * @@exception IOException if an input/output error occurs
      */
     public CustomObjectInputStream(InputStream stream,
                                    ClassLoader classLoader)
-        throws IOException {
+            throws IOException {
 
         super(stream);
         this.classLoader = classLoader;
@@ -109,12 +108,11 @@ public final class CustomObjectInputStream
      * description, by using the class loader assigned to this Context.
      *
      * @@param classDesc Class description from the input stream
-     *
      * @@exception ClassNotFoundException if this class cannot be found
      * @@exception IOException if an input/output error occurs
      */
     public Class resolveClass(ObjectStreamClass classDesc)
-        throws ClassNotFoundException, IOException {
+            throws ClassNotFoundException, IOException {
 
         return (classLoader.loadClass(classDesc.getName()));
     }

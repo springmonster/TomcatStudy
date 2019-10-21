@@ -65,11 +65,7 @@
 package org.apache.catalina.util;
 
 
-import java.util.Collection;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 
 /**
@@ -143,8 +139,8 @@ public final class Enumerator implements Enumeration {
      * Tests if this enumeration contains more elements.
      *
      * @return <code>true</code> if and only if this enumeration object
-     *  contains at least one more element to provide, <code>false</code>
-     *  otherwise
+     * contains at least one more element to provide, <code>false</code>
+     * otherwise
      */
     public boolean hasMoreElements() {
 
@@ -158,8 +154,7 @@ public final class Enumerator implements Enumeration {
      * has at least one more element to provide.
      *
      * @return the next element of this enumeration
-     *
-     * @exception NoSuchElementException if no more elements exist
+     * @throws NoSuchElementException if no more elements exist
      */
     public Object nextElement() throws NoSuchElementException {
 

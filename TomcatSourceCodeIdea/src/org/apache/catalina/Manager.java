@@ -80,9 +80,9 @@ import java.io.IOException;
  * must obey the following constraints:
  * <ul>
  * <li>Must implement <code>Lifecycle</code> so that the Context can indicate
- *     that a restart is required.
+ * that a restart is required.
  * <li>Must allow a call to <code>stop()</code> to be followed by a call to
- *     <code>start()</code> on the same <code>Manager</code> instance.
+ * <code>start()</code> on the same <code>Manager</code> instance.
  * </ul>
  *
  * @author Craig R. McClanahan
@@ -121,7 +121,6 @@ public interface Manager {
      * @param defaultContext The newly associated DefaultContext
      */
     public void setDefaultContext(DefaultContext defaultContext);
-
 
 
     /**
@@ -191,8 +190,8 @@ public interface Manager {
      * method of the returned session.  If a new session cannot be created
      * for any reason, return <code>null</code>.
      *
-     * @exception IllegalStateException if a new session cannot be
-     *  instantiated for any reason
+     * @throws IllegalStateException if a new session cannot be
+     *                               instantiated for any reason
      */
     public Session createSession();
 
@@ -202,11 +201,10 @@ public interface Manager {
      * specified session id (if any); otherwise return <code>null</code>.
      *
      * @param id The session id for the session to be returned
-     *
-     * @exception IllegalStateException if a new session cannot be
-     *  instantiated for any reason
-     * @exception IOException if an input/output error occurs while
-     *  processing this request
+     * @throws IllegalStateException if a new session cannot be
+     *                               instantiated for any reason
+     * @throws IOException           if an input/output error occurs while
+     *                               processing this request
      */
     public Session findSession(String id) throws IOException;
 
@@ -223,9 +221,9 @@ public interface Manager {
      * to the appropriate persistence mechanism, if any.  If persistence is not
      * supported, this method returns without doing anything.
      *
-     * @exception ClassNotFoundException if a serialized class cannot be
-     *  found during the reload
-     * @exception IOException if an input/output error occurs
+     * @throws ClassNotFoundException if a serialized class cannot be
+     *                                found during the reload
+     * @throws IOException            if an input/output error occurs
      */
     public void load() throws ClassNotFoundException, IOException;
 
@@ -251,7 +249,7 @@ public interface Manager {
      * mechanism, if any.  If persistence is not supported, this method
      * returns without doing anything.
      *
-     * @exception IOException if an input/output error occurs
+     * @throws IOException if an input/output error occurs
      */
     public void unload() throws IOException;
 

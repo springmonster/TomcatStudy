@@ -12,35 +12,35 @@ import org.apache.catalina.connector.http.HttpConnector;
 
 @SuppressWarnings("deprecation")
 public final class Bootstrap1 {
-	@SuppressWarnings("deprecation")
-	public static void main(String[] args) {
+    @SuppressWarnings("deprecation")
+    public static void main(String[] args) {
 
-		/*
-		 * call by using http://localhost:8080/ModernServlet, but could be invoked by
-		 * any name
-		 */
+        /*
+         * call by using http://localhost:8080/ModernServlet, but could be invoked by
+         * any name
+         */
 
-		HttpConnector connector = new HttpConnector();
-		Wrapper wrapper = new SimpleWrapper();
-		wrapper.setServletClass("ModernServlet");
-		Loader loader = new SimpleLoader();
-		Valve valve1 = new HeaderLoggerValve();
-		Valve valve2 = new ClientIPLoggerValve();
+        HttpConnector connector = new HttpConnector();
+        Wrapper wrapper = new SimpleWrapper();
+        wrapper.setServletClass("ModernServlet");
+        Loader loader = new SimpleLoader();
+        Valve valve1 = new HeaderLoggerValve();
+        Valve valve2 = new ClientIPLoggerValve();
 
-		wrapper.setLoader(loader);
-		((Pipeline) wrapper).addValve(valve1);
-		((Pipeline) wrapper).addValve(valve2);
+        wrapper.setLoader(loader);
+        ((Pipeline) wrapper).addValve(valve1);
+        ((Pipeline) wrapper).addValve(valve2);
 
-		connector.setContainer(wrapper);
+        connector.setContainer(wrapper);
 
-		try {
-			connector.initialize();
-			connector.start();
+        try {
+            connector.initialize();
+            connector.start();
 
-			// make the application wait until we press a key.
-			System.in.read();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+            // make the application wait until we press a key.
+            System.in.read();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

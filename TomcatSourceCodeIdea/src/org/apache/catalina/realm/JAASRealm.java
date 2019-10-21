@@ -64,17 +64,14 @@
 package org.apache.catalina.realm;
 
 
+import org.apache.catalina.LifecycleException;
+import org.apache.catalina.util.StringManager;
+
+import javax.security.auth.Subject;
+import javax.security.auth.login.*;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Iterator;
-import javax.security.auth.Subject;
-import javax.security.auth.login.AccountExpiredException;
-import javax.security.auth.login.CredentialExpiredException;
-import javax.security.auth.login.FailedLoginException;
-import javax.security.auth.login.LoginContext;
-import javax.security.auth.login.LoginException;
-import org.apache.catalina.LifecycleException;
-import org.apache.catalina.util.StringManager;
 
 
 /**
@@ -101,31 +98,31 @@ import org.apache.catalina.util.StringManager;
  * this Realm:</p>
  * <ul>
  * <li>The JAAS <code>LoginModule</code> is assumed to return a
- *     <code>Subject with at least one <code>Principal</code> instance
- *     representing the user himself or herself, and zero or more separate
- *     <code>Principals</code> representing the security roles authorized
- *     for this user.</li>
+ * <code>Subject with at least one <code>Principal</code> instance
+ * representing the user himself or herself, and zero or more separate
+ * <code>Principals</code> representing the security roles authorized
+ * for this user.</li>
  * <li>On the <code>Principal</code> representing the user, the Principal
- *     name is an appropriate value to return via the Servlet API method
- *     <code>HttpServletRequest.getRemoteUser()</code>.</li>
+ * name is an appropriate value to return via the Servlet API method
+ * <code>HttpServletRequest.getRemoteUser()</code>.</li>
  * <li>On the <code>Principals</code> representing the security roles, the
- *     name is the name of the authorized security role.</li>
+ * name is the name of the authorized security role.</li>
  * <li>This Realm will be configured with two lists of fully qualified Java
- *     class names of classes that implement
- *     <code>java.security.Principal</code> - one that identifies class(es)
- *     representing a user, and one that identifies class(es) representing
- *     a security role.</li>
+ * class names of classes that implement
+ * <code>java.security.Principal</code> - one that identifies class(es)
+ * representing a user, and one that identifies class(es) representing
+ * a security role.</li>
  * <li>As this Realm iterates over the <code>Principals</code> returned by
- *     <code>Subject.getPrincipals()</code>, it will identify the first
- *     <code>Principal</code> that matches the "user classes" list as the
- *     <code>Principal</code> for this user.</li>
+ * <code>Subject.getPrincipals()</code>, it will identify the first
+ * <code>Principal</code> that matches the "user classes" list as the
+ * <code>Principal</code> for this user.</li>
  * <li>As this Realm iterates over the <code>Princpals</code> returned by
- *     <code>Subject.getPrincipals()</code>, it will accumulate the set of
- *     all <code>Principals</code> matching the "role classes" list as
- *     identifying the security roles for this user.</li>
+ * <code>Subject.getPrincipals()</code>, it will accumulate the set of
+ * all <code>Principals</code> matching the "role classes" list as
+ * identifying the security roles for this user.</li>
  * <li>It is a configuration error for the JAAS login method to return a
- *     validated <code>Subject</code> without a <code>Principal</code> that
- *     matches the "user classes" list.</li>
+ * validated <code>Subject</code> without a <code>Principal</code> that
+ * matches the "user classes" list.</li>
  * </ul>
  *
  * @author Craig R. McClanahan
@@ -133,7 +130,7 @@ import org.apache.catalina.util.StringManager;
  */
 
 public class JAASRealm
-    extends RealmBase {
+        extends RealmBase {
 
 
     // ----------------------------------------------------- Instance Variables
@@ -150,7 +147,7 @@ public class JAASRealm
      * Descriptive information about this Realm implementation.
      */
     protected static final String info =
-        "org.apache.catalina.realm.JAASRealm/1.0";
+            "org.apache.catalina.realm.JAASRealm/1.0";
 
 
     /**
@@ -169,7 +166,7 @@ public class JAASRealm
      * The string manager for this package.
      */
     protected static final StringManager sm =
-        StringManager.getManager(Constants.Package);
+            StringManager.getManager(Constants.Package);
 
 
     /**
@@ -180,14 +177,14 @@ public class JAASRealm
 
     // ------------------------------------------------------------- Properties
 
-    
+
     /**
      * setter for the appName member variable
      */
     public void setAppName(String name) {
         appName = name;
     }
-    
+
     /**
      * getter for the appName member variable
      */
@@ -265,15 +262,15 @@ public class JAASRealm
     /**
      * Return the Principal associated with the specified username and
      * credentials, if there is one; otherwise return <code>null</code>.
-     *
+     * <p>
      * If there are any errors with the JDBC connection, executing
      * the query or anything we return null (don't authenticate). This
      * event is also logged, and the connection will be closed so that
      * a subsequent request will automatically re-open it.
      *
-     * @param username Username of the Principal to look up
+     * @param username    Username of the Principal to look up
      * @param credentials Password or other credentials to use in
-     *  authenticating this username
+     *                    authenticating this username
      */
     public Principal authenticate(String username, String credentials) {
 
@@ -281,8 +278,8 @@ public class JAASRealm
         LoginContext loginContext = null;
         try {
             loginContext = new LoginContext
-                (appName, new JAASCallbackHandler(this, username,
-                                                  credentials));
+                    (appName, new JAASCallbackHandler(this, username,
+                            credentials));
         } catch (LoginException e) {
             log(sm.getString("jaasRealm.loginException", username), e);
             return (null);
@@ -405,11 +402,10 @@ public class JAASRealm
 
 
     /**
-     *
      * Prepare for active use of the public methods of this Component.
      *
-     * @exception LifecycleException if this component detects a fatal error
-     *  that prevents it from being started
+     * @throws LifecycleException if this component detects a fatal error
+     *                            that prevents it from being started
      */
     public void start() throws LifecycleException {
 
@@ -422,8 +418,8 @@ public class JAASRealm
     /**
      * Gracefully shut down active use of the public methods of this Component.
      *
-     * @exception LifecycleException if this component detects a fatal error
-     *  that needs to be reported
+     * @throws LifecycleException if this component detects a fatal error
+     *                            that needs to be reported
      */
     public void stop() throws LifecycleException {
 

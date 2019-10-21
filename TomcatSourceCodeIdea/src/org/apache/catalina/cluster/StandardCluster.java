@@ -63,20 +63,16 @@
 
 package org.apache.catalina.cluster;
 
+import org.apache.catalina.*;
+import org.apache.catalina.util.LifecycleSupport;
+import org.apache.catalina.util.StringManager;
+
 import java.beans.PropertyChangeSupport;
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.net.UnknownHostException;
-import java.io.IOException;
 import java.util.Vector;
-import org.apache.catalina.Cluster;
-import org.apache.catalina.Container;
-import org.apache.catalina.Lifecycle;
-import org.apache.catalina.LifecycleException;
-import org.apache.catalina.LifecycleListener;
-import org.apache.catalina.Logger;
-import org.apache.catalina.util.LifecycleSupport;
-import org.apache.catalina.util.StringManager;
 
 /**
  * A <b>Cluster</b> implementation. Responsible for setting up
@@ -87,7 +83,7 @@ import org.apache.catalina.util.StringManager;
  */
 
 public final class StandardCluster
-    implements Cluster, Lifecycle, Runnable {
+        implements Cluster, Lifecycle, Runnable {
 
     // ----------------------------------------------------- Instance Variables
 
@@ -199,7 +195,7 @@ public final class StandardCluster
      * <code>&lt;description&gt;/&lt;version&gt;</code>.
      */
     public String getInfo() {
-        return(this.info);
+        return (this.info);
     }
 
     /**
@@ -209,7 +205,7 @@ public final class StandardCluster
      * @return The Cluster implementation
      */
     protected String getName() {
-        return(this.clusterImpName);
+        return (this.clusterImpName);
     }
 
     /**
@@ -227,7 +223,7 @@ public final class StandardCluster
      * @return The debug level
      */
     public int getDebug() {
-        return(this.debug);
+        return (this.debug);
     }
 
     /**
@@ -240,8 +236,8 @@ public final class StandardCluster
         String oldClusterName = this.clusterName;
         this.clusterName = clusterName;
         support.firePropertyChange("clusterName",
-                                   oldClusterName,
-                                   this.clusterName);
+                oldClusterName,
+                this.clusterName);
     }
 
     /**
@@ -251,7 +247,7 @@ public final class StandardCluster
      * @return The name of the cluster associated with this server
      */
     public String getClusterName() {
-        return(this.clusterName);
+        return (this.clusterName);
     }
 
     /**
@@ -263,8 +259,8 @@ public final class StandardCluster
         Container oldContainer = this.container;
         this.container = container;
         support.firePropertyChange("container",
-                                   oldContainer,
-                                   this.container);
+                oldContainer,
+                this.container);
     }
 
     /**
@@ -273,7 +269,7 @@ public final class StandardCluster
      * @return The Container associated with our Cluster
      */
     public Container getContainer() {
-        return(this.container);
+        return (this.container);
     }
 
     /**
@@ -285,8 +281,8 @@ public final class StandardCluster
         int oldMulticastPort = this.multicastPort;
         this.multicastPort = multicastPort;
         support.firePropertyChange("multicastPort",
-                                   oldMulticastPort,
-                                   this.multicastPort);
+                oldMulticastPort,
+                this.multicastPort);
     }
 
     /**
@@ -295,7 +291,7 @@ public final class StandardCluster
      * @return The Port associated with our Cluster
      */
     public int getMulticastPort() {
-        return(this.multicastPort);
+        return (this.multicastPort);
     }
 
     /**
@@ -308,11 +304,11 @@ public final class StandardCluster
             InetAddress oldMulticastAddress = this.multicastAddress;
             this.multicastAddress = InetAddress.getByName(multicastAddress);
             support.firePropertyChange("multicastAddress",
-                                       oldMulticastAddress,
-                                       this.multicastAddress);
+                    oldMulticastAddress,
+                    this.multicastAddress);
         } catch (UnknownHostException e) {
             log(sm.getString("standardCluster.invalidAddress",
-                             multicastAddress));
+                    multicastAddress));
         }
     }
 
@@ -322,7 +318,7 @@ public final class StandardCluster
      * @return The Groupaddress associated with our Cluster
      */
     public InetAddress getMulticastAddress() {
-        return(this.multicastAddress);
+        return (this.multicastAddress);
     }
 
     /**
@@ -335,8 +331,8 @@ public final class StandardCluster
         int oldCheckInterval = this.checkInterval;
         this.checkInterval = checkInterval;
         support.firePropertyChange("checkInterval",
-                                   oldCheckInterval,
-                                   this.checkInterval);
+                oldCheckInterval,
+                this.checkInterval);
     }
 
     /**
@@ -345,7 +341,7 @@ public final class StandardCluster
      * @return The time in seconds this Cluster sleeps
      */
     public int getCheckInterval() {
-        return(this.checkInterval);
+        return (this.checkInterval);
     }
 
     // --------------------------------------------------------- Public Methods
@@ -360,7 +356,7 @@ public final class StandardCluster
      * @return Collection with all members in the Cluster
      */
     public ClusterMemberInfo[] getRemoteClusterMembers() {
-        return((ClusterMemberInfo[])this.clusterMembers.toArray());
+        return ((ClusterMemberInfo[]) this.clusterMembers.toArray());
     }
 
     /**
@@ -369,7 +365,7 @@ public final class StandardCluster
      * @return Cluster information
      */
     public ClusterMemberInfo getLocalClusterMember() {
-        return(this.localClusterMember);
+        return (this.localClusterMember);
     }
 
     /**
@@ -384,19 +380,19 @@ public final class StandardCluster
     public ClusterSender getClusterSender(String senderId) {
         Logger logger = null;
         MulticastSender send = new MulticastSender(senderId,
-                                                   multicastSocket,
-                                                   multicastAddress,
-                                                   multicastPort);
+                multicastSocket,
+                multicastAddress,
+                multicastPort);
         if (container != null)
             logger = container.getLogger();
 
         send.setLogger(logger);
         send.setDebug(debug);
 
-        if(debug > 1)
+        if (debug > 1)
             log(sm.getString("standardCluster.createSender", senderId));
 
-        return(send);
+        return (send);
     }
 
     /**
@@ -410,9 +406,9 @@ public final class StandardCluster
     public ClusterReceiver getClusterReceiver(String senderId) {
         Logger logger = null;
         MulticastReceiver recv = new MulticastReceiver(senderId,
-                                                       multicastSocket,
-                                                       multicastAddress,
-                                                       multicastPort);
+                multicastSocket,
+                multicastAddress,
+                multicastPort);
 
         if (container != null)
             logger = container.getLogger();
@@ -422,10 +418,10 @@ public final class StandardCluster
         recv.setCheckInterval(checkInterval);
         recv.start();
 
-        if(debug > 1)
+        if (debug > 1)
             log(sm.getString("standardCluster.createReceiver", senderId));
 
-        return(recv);
+        return (recv);
     }
 
     /**
@@ -441,14 +437,14 @@ public final class StandardCluster
 
         if (logger != null) {
             logger.log(getName() + "[" + container.getName() + "]: "
-                       + message);
+                    + message);
         } else {
             String containerName = null;
             if (container != null)
                 containerName = container.getName();
 
             System.out.println(getName() + "[" + containerName
-                               + "]: " + message);
+                    + "]: " + message);
         }
     }
 
@@ -457,8 +453,8 @@ public final class StandardCluster
     private void processReceive() {
         Object[] objs = clusterReceiver.getObjects();
 
-        for(int i=0; i < objs.length;i++) {
-            clusterMembers.add((ClusterMemberInfo)objs[i]);
+        for (int i = 0; i < objs.length; i++) {
+            clusterMembers.add((ClusterMemberInfo) objs[i]);
         }
     }
 
@@ -476,7 +472,7 @@ public final class StandardCluster
 
 
     /**
-     * Get the lifecycle listeners associated with this lifecycle. If this 
+     * Get the lifecycle listeners associated with this lifecycle. If this
      * Lifecycle has no listeners registered, a zero-length array is returned.
      */
     public LifecycleListener[] findLifecycleListeners() {
@@ -500,8 +496,8 @@ public final class StandardCluster
      * component.  This method should be called after <code>configure()</code>,
      * and before any of the public methods of the component are utilized.
      *
-     * @exception LifecycleException if this component detects a fatal error
-     *  that prevents this component from being used
+     * @throws LifecycleException if this component detects a fatal error
+     *                            that prevents this component from being used
      */
     public void start() throws LifecycleException {
         // Validate and update our current component state
@@ -511,7 +507,7 @@ public final class StandardCluster
         try {
             multicastSocket = new MulticastSocket(multicastPort);
 
-            if(multicastSocket != null && multicastAddress != null) {
+            if (multicastSocket != null && multicastAddress != null) {
                 multicastSocket.joinGroup(multicastAddress);
 
                 clusterSender = getClusterSender(getName());
@@ -526,7 +522,7 @@ public final class StandardCluster
 
                 if (debug > 1)
                     log(sm.getString("standardCluster.joinGroup",
-                                     multicastAddress));
+                            multicastAddress));
             } else {
                 log(sm.getString("standardCluster.socketOrAddressNull"));
             }
@@ -546,8 +542,8 @@ public final class StandardCluster
      * component.  This method should be the last one called on a given
      * instance of this component.
      *
-     * @exception LifecycleException if this component detects a fatal error
-     *  that needs to be reported
+     * @throws LifecycleException if this component detects a fatal error
+     *                            that needs to be reported
      */
     public void stop() throws LifecycleException {
         // Validate and update our current component state
@@ -559,12 +555,12 @@ public final class StandardCluster
             multicastSocket = null;
         } catch (IOException e) {
             log(sm.getString("standardCluster.leaveException",
-                             multicastAddress));
+                    multicastAddress));
         }
 
         if (debug > 1)
             log(sm.getString("standardCluster.leaveGroup",
-                             multicastAddress));
+                    multicastAddress));
 
         lifecycle.fireLifecycleEvent(STOP_EVENT, null);
         started = false;

@@ -65,10 +65,10 @@
 package org.apache.catalina.session;
 
 
-import java.util.Enumeration;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionContext;
+import java.util.Enumeration;
 
 
 /**
@@ -79,7 +79,7 @@ import javax.servlet.http.HttpSessionContext;
  */
 
 public class StandardSessionFacade
-    implements HttpSession {
+        implements HttpSession {
 
 
     // ----------------------------------------------------------- Constructors

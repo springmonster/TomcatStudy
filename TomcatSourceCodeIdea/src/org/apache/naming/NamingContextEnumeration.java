@@ -7,7 +7,7 @@
  *
  * The Apache Software License, Version 1.1
  *
- * Copyright (c) 1999 The Apache Software Foundation.  All rights 
+ * Copyright (c) 1999 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -15,7 +15,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -23,15 +23,15 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution, if
- *    any, must include the following acknowlegement:  
- *       "This product includes software developed by the 
+ *    any, must include the following acknowlegement:
+ *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowlegement may appear in the software itself,
  *    if and wherever such third-party acknowlegements normally appear.
  *
  * 4. The names "The Jakarta Project", "Tomcat", and "Apache Software
  *    Foundation" must not be used to endorse or promote products derived
- *    from this software without prior written permission. For written 
+ *    from this software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache"
@@ -63,11 +63,11 @@
 
 package org.apache.naming;
 
-import java.util.Vector;
-import java.util.Enumeration;
-import javax.naming.NamingException;
-import javax.naming.NamingEnumeration;
 import javax.naming.NameClassPair;
+import javax.naming.NamingEnumeration;
+import javax.naming.NamingException;
+import java.util.Enumeration;
+import java.util.Vector;
 
 /**
  * Naming enumeration implementation.
@@ -78,52 +78,52 @@ import javax.naming.NameClassPair;
 
 public class NamingContextEnumeration implements NamingEnumeration {
 
-	// ----------------------------------------------------------- Constructors
+    // ----------------------------------------------------------- Constructors
 
-	public NamingContextEnumeration(Vector entries) {
-		enumA = entries.elements();
-	}
+    public NamingContextEnumeration(Vector entries) {
+        enumA = entries.elements();
+    }
 
-	public NamingContextEnumeration(Enumeration enumA) {
-		this.enumA = enumA;
-	}
+    public NamingContextEnumeration(Enumeration enumA) {
+        this.enumA = enumA;
+    }
 
-	// -------------------------------------------------------------- Variables
+    // -------------------------------------------------------------- Variables
 
-	/**
-	 * Underlying enumeration.
-	 */
-	protected Enumeration enumA;
+    /**
+     * Underlying enumeration.
+     */
+    protected Enumeration enumA;
 
-	// --------------------------------------------------------- Public Methods
+    // --------------------------------------------------------- Public Methods
 
-	/**
-	 * Retrieves the next element in the enumeration.
-	 */
-	public Object next() throws NamingException {
-		return nextElement();
-	}
+    /**
+     * Retrieves the next element in the enumeration.
+     */
+    public Object next() throws NamingException {
+        return nextElement();
+    }
 
-	/**
-	 * Determines whether there are any more elements in the enumeration.
-	 */
-	public boolean hasMore() throws NamingException {
-		return enumA.hasMoreElements();
-	}
+    /**
+     * Determines whether there are any more elements in the enumeration.
+     */
+    public boolean hasMore() throws NamingException {
+        return enumA.hasMoreElements();
+    }
 
-	/**
-	 * Closes this enumeration.
-	 */
-	public void close() throws NamingException {
-	}
+    /**
+     * Closes this enumeration.
+     */
+    public void close() throws NamingException {
+    }
 
-	public boolean hasMoreElements() {
-		return enumA.hasMoreElements();
-	}
+    public boolean hasMoreElements() {
+        return enumA.hasMoreElements();
+    }
 
-	public Object nextElement() {
-		NamingEntry entry = (NamingEntry) enumA.nextElement();
-		return new NameClassPair(entry.name, entry.value.getClass().getName());
-	}
+    public Object nextElement() {
+        NamingEntry entry = (NamingEntry) enumA.nextElement();
+        return new NameClassPair(entry.name, entry.value.getClass().getName());
+    }
 
 }

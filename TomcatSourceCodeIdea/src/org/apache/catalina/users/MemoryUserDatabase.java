@@ -64,14 +64,6 @@
 package org.apache.catalina.users;
 
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Iterator;
 import org.apache.catalina.Group;
 import org.apache.catalina.Role;
 import org.apache.catalina.User;
@@ -80,6 +72,10 @@ import org.apache.catalina.util.StringManager;
 import org.apache.commons.digester.Digester;
 import org.apache.commons.digester.ObjectCreationFactory;
 import org.xml.sax.Attributes;
+
+import java.io.*;
+import java.util.HashMap;
+import java.util.Iterator;
 
 
 /**
@@ -169,7 +165,7 @@ public class MemoryUserDatabase implements UserDatabase {
      * The string manager for this package.
      */
     private static StringManager sm =
-        StringManager.getManager(Constants.Package);
+            StringManager.getManager(Constants.Package);
 
 
     /**
@@ -252,14 +248,13 @@ public class MemoryUserDatabase implements UserDatabase {
     }
 
 
-
     // --------------------------------------------------------- Public Methods
 
 
     /**
      * Finalize access to this user database.
      *
-     * @exception Exception if any exception is thrown during closing
+     * @throws Exception if any exception is thrown during closing
      */
     public void close() throws Exception {
 
@@ -278,7 +273,7 @@ public class MemoryUserDatabase implements UserDatabase {
     /**
      * Create and return a new {@link Group} defined in this user database.
      *
-     * @param groupname The group name of the new group (must be unique)
+     * @param groupname   The group name of the new group (must be unique)
      * @param description The description of this group
      */
     public Group createGroup(String groupname, String description) {
@@ -295,7 +290,7 @@ public class MemoryUserDatabase implements UserDatabase {
     /**
      * Create and return a new {@link Role} defined in this user database.
      *
-     * @param rolename The role name of the new group (must be unique)
+     * @param rolename    The role name of the new group (must be unique)
      * @param description The description of this group
      */
     public Role createRole(String rolename, String description) {
@@ -376,7 +371,7 @@ public class MemoryUserDatabase implements UserDatabase {
     /**
      * Initialize access to this user database.
      *
-     * @exception Exception if any exception is thrown during opening
+     * @throws Exception if any exception is thrown during opening
      */
     public void open() throws Exception {
 
@@ -392,7 +387,7 @@ public class MemoryUserDatabase implements UserDatabase {
                 File file = new File(pathname);
                 if (!file.isAbsolute()) {
                     file = new File(System.getProperty("catalina.base"),
-                                    pathname);
+                            pathname);
                 }
                 if (!file.exists()) {
                     return;
@@ -402,14 +397,14 @@ public class MemoryUserDatabase implements UserDatabase {
                 // Construct a digester to read the XML input file
                 Digester digester = new Digester();
                 digester.addFactoryCreate
-                    ("tomcat-users/group",
-                     new MemoryGroupCreationFactory(this));
+                        ("tomcat-users/group",
+                                new MemoryGroupCreationFactory(this));
                 digester.addFactoryCreate
-                    ("tomcat-users/role",
-                     new MemoryRoleCreationFactory(this));
+                        ("tomcat-users/role",
+                                new MemoryRoleCreationFactory(this));
                 digester.addFactoryCreate
-                    ("tomcat-users/user",
-                     new MemoryUserCreationFactory(this));
+                        ("tomcat-users/user",
+                                new MemoryUserCreationFactory(this));
 
                 // Parse the XML input file to load this database
                 try {
@@ -491,7 +486,7 @@ public class MemoryUserDatabase implements UserDatabase {
      * Save any updated information to the persistent storage location for
      * this user database.
      *
-     * @exception Exception if any exception is thrown during saving
+     * @throws Exception if any exception is thrown during saving
      */
     public void save() throws Exception {
 
@@ -499,7 +494,7 @@ public class MemoryUserDatabase implements UserDatabase {
         File fileNew = new File(pathnameNew);
         if (!fileNew.isAbsolute()) {
             fileNew =
-                new File(System.getProperty("catalina.base"), pathnameNew);
+                    new File(System.getProperty("catalina.base"), pathnameNew);
         }
         PrintWriter writer = null;
         try {
@@ -539,8 +534,8 @@ public class MemoryUserDatabase implements UserDatabase {
                 writer.close();
                 fileNew.delete();
                 throw new IOException
-                    (sm.getString("memoryUserDatabase.writeException",
-                                  fileNew.getAbsolutePath()));
+                        (sm.getString("memoryUserDatabase.writeException",
+                                fileNew.getAbsolutePath()));
             }
             writer.close();
         } catch (IOException e) {
@@ -555,20 +550,20 @@ public class MemoryUserDatabase implements UserDatabase {
         File fileOld = new File(pathnameNew);
         if (!fileOld.isAbsolute()) {
             fileOld =
-                new File(System.getProperty("catalina.base"), pathnameOld);
+                    new File(System.getProperty("catalina.base"), pathnameOld);
         }
         fileOld.delete();
         File fileOrig = new File(pathname);
         if (!fileOrig.isAbsolute()) {
             fileOrig =
-                new File(System.getProperty("catalina.base"), pathname);
+                    new File(System.getProperty("catalina.base"), pathname);
         }
         if (fileOrig.exists()) {
             fileOld.delete();
             if (!fileOrig.renameTo(fileOld)) {
                 throw new IOException
-                    (sm.getString("memoryUserDatabase.renameOld",
-                                  fileOld.getAbsolutePath()));
+                        (sm.getString("memoryUserDatabase.renameOld",
+                                fileOld.getAbsolutePath()));
             }
         }
         if (!fileNew.renameTo(fileOrig)) {
@@ -576,8 +571,8 @@ public class MemoryUserDatabase implements UserDatabase {
                 fileOld.renameTo(fileOrig);
             }
             throw new IOException
-                (sm.getString("memoryUserDatabase.renameNew",
-                              fileOrig.getAbsolutePath()));
+                    (sm.getString("memoryUserDatabase.renameNew",
+                            fileOrig.getAbsolutePath()));
         }
         fileOld.delete();
 
@@ -619,7 +614,6 @@ public class MemoryUserDatabase implements UserDatabase {
 
 
 }
-
 
 
 /**
