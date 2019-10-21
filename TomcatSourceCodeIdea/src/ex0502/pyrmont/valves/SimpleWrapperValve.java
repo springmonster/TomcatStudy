@@ -1,6 +1,6 @@
-package ex05.pyrmont.valves;
+package ex0502.pyrmont.valves;
 
-import ex05.pyrmont.core.SimpleWrapper;
+import ex0502.pyrmont.core.SimpleWrapper;
 import org.apache.catalina.*;
 
 import javax.servlet.Servlet;

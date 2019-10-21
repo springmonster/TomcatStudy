@@ -1,7 +1,7 @@
-package ex05.pyrmont.core;
+package ex0502.pyrmont.core;
 
-import ex05.pyrmont.valves.SimpleWrapperValve;
 import org.apache.catalina.*;
+import ex0502.pyrmont.valves.SimpleWrapperValve;
 
 import javax.naming.directory.DirContext;
 import javax.servlet.Servlet;

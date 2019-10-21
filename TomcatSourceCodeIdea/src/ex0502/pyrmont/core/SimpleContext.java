@@ -1,4 +1,4 @@
-package ex05.pyrmont.core;
+package ex0502.pyrmont.core;
 
 
 import org.apache.catalina.*;
@@ -531,7 +531,7 @@ public class SimpleContext implements Context, Pipeline {
     }
 
     public void addChild(Container child) {
-        child.setParent((Container) this);
+        child.setParent(this);
         children.put(child.getName(), child);
     }
 
@@ -541,13 +541,13 @@ public class SimpleContext implements Context, Pipeline {
     public void addMapper(Mapper mapper) {
         // this method is adopted from addMapper in ContainerBase
         // the first mapper added becomes the default mapper
-        mapper.setContainer((Container) this);      // May throw IAE
+        mapper.setContainer(this);      // May throw IAE
         this.mapper = mapper;
         synchronized (mappers) {
             if (mappers.get(mapper.getProtocol()) != null)
                 throw new IllegalArgumentException("addMapper:  Protocol '" +
                         mapper.getProtocol() + "' is not unique");
-            mapper.setContainer((Container) this);      // May throw IAE
+            mapper.setContainer(this);      // May throw IAE
             mappers.put(mapper.getProtocol(), mapper);
             if (mappers.size() == 1)
                 this.mapper = mapper;

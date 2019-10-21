@@ -1,4 +1,4 @@
-package ex05.pyrmont.core;
+package ex0502.pyrmont.core;
 
 import org.apache.catalina.*;
 

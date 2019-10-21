@@ -15,8 +15,8 @@ public class SimpleLoader implements Loader {
 
     public static final String WEB_ROOT = System.getProperty("user.dir") + File.separator + "webroot";
 
-    ClassLoader classLoader = null;
-    Container container = null;
+    private ClassLoader classLoader = null;
+    private Container container = null;
 
     public SimpleLoader() {
         try {

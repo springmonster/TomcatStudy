@@ -1,4 +1,4 @@
-package ex05.pyrmont.core;
+package ex0502.pyrmont.core;
 
 import org.apache.catalina.Container;
 import org.apache.catalina.DefaultContext;
@@ -11,6 +11,9 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.net.URLStreamHandler;
 
+/**
+ * 指定去哪个文件夹下面load自定义的servlet协议实现类
+ */
 public class SimpleLoader implements Loader {
 
     public static final String WEB_ROOT = System.getProperty("user.dir") + File.separator + "webroot";
