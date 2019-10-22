@@ -24,14 +24,15 @@ public class HeaderLoggerValve implements Valve, Contained {
         if (sreq instanceof HttpServletRequest) {
             HttpServletRequest hreq = (HttpServletRequest) sreq;
             Enumeration headerNames = hreq.getHeaderNames();
+
             while (headerNames.hasMoreElements()) {
                 String headerName = headerNames.nextElement().toString();
                 String headerValue = hreq.getHeader(headerName);
                 System.out.println(headerName + ":" + headerValue);
             }
-
-        } else
+        } else {
             System.out.println("Not an HTTP Request");
+        }
 
         System.out.println("------------------------------------");
     }

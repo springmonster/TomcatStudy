@@ -11,7 +11,7 @@ import java.beans.PropertyChangeListener;
 import java.io.IOException;
 
 /**
- * 这里其实就是一个Container
+ * 这里其实就是一个Container，这已经是最基本的Wrapper了
  */
 public class SimpleWrapper implements Wrapper, Pipeline {
 

@@ -22,7 +22,7 @@ public class SimpleWrapperValve implements Valve, Contained {
         SimpleWrapper wrapper = (SimpleWrapper) getContainer();
         ServletRequest sreq = request.getRequest();
         ServletResponse sres = response.getResponse();
-        Servlet servlet = null;
+        Servlet servlet;
         HttpServletRequest hreq = null;
         if (sreq instanceof HttpServletRequest)
             hreq = (HttpServletRequest) sreq;
