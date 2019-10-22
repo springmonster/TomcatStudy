@@ -1,4 +1,4 @@
-package ex0502.pyrmont.core;
+package ex0502.pyrmont.valves;
 
 import org.apache.catalina.*;
 
