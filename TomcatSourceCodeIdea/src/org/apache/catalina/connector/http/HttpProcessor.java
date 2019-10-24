@@ -82,7 +82,7 @@ final class HttpProcessor implements Lifecycle, Runnable {
     private int id = 0;
 
     /**
-     * The lifecycle event support for this component.
+     * The lifecycleSupport event support for this component.
      */
     private LifecycleSupport lifecycle = new LifecycleSupport(this);
 
@@ -1016,7 +1016,7 @@ final class HttpProcessor implements Lifecycle, Runnable {
     // ------------------------------------------------------ Lifecycle Methods
 
     /**
-     * Add a lifecycle event listener to this component.
+     * Add a lifecycleSupport event listener to this component.
      *
      * @param listener The listener to add
      */
@@ -1027,7 +1027,7 @@ final class HttpProcessor implements Lifecycle, Runnable {
     }
 
     /**
-     * Get the lifecycle listeners associated with this lifecycle. If this Lifecycle
+     * Get the lifecycleSupport listeners associated with this lifecycleSupport. If this Lifecycle
      * has no listeners registered, a zero-length array is returned.
      */
     public LifecycleListener[] findLifecycleListeners() {
@@ -1037,7 +1037,7 @@ final class HttpProcessor implements Lifecycle, Runnable {
     }
 
     /**
-     * Remove a lifecycle event listener from this component.
+     * Remove a lifecycleSupport event listener from this component.
      *
      * @param listener The listener to add
      */

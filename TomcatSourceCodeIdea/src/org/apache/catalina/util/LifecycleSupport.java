@@ -91,6 +91,7 @@ public final class LifecycleSupport {
      * @param lifecycle The Lifecycle component that will be the source
      *                  of events that we fire
      */
+    // Lifecycle是什么？可以是一个Context，将LifecycleSupport和Lifecycle连接起来
     public LifecycleSupport(Lifecycle lifecycle) {
 
         super();
@@ -103,7 +104,7 @@ public final class LifecycleSupport {
 
 
     /**
-     * The source component for lifecycle events that we will fire.
+     * The source component for lifecycleSupport events that we will fire.
      */
     private Lifecycle lifecycle = null;
 
@@ -111,14 +112,14 @@ public final class LifecycleSupport {
     /**
      * The set of registered LifecycleListeners for event notifications.
      */
-    private LifecycleListener listeners[] = new LifecycleListener[0];
+    private LifecycleListener[] listeners = new LifecycleListener[0];
 
 
     // --------------------------------------------------------- Public Methods
 
 
     /**
-     * Add a lifecycle event listener to this component.
+     * Add a lifecycleSupport event listener to this component.
      *
      * @param listener The listener to add
      */
@@ -127,8 +128,9 @@ public final class LifecycleSupport {
         synchronized (listeners) {
             LifecycleListener results[] =
                     new LifecycleListener[listeners.length + 1];
-            for (int i = 0; i < listeners.length; i++)
+            for (int i = 0; i < listeners.length; i++) {
                 results[i] = listeners[i];
+            }
             results[listeners.length] = listener;
             listeners = results;
         }
@@ -137,7 +139,7 @@ public final class LifecycleSupport {
 
 
     /**
-     * Get the lifecycle listeners associated with this lifecycle. If this
+     * Get the lifecycleSupport listeners associated with this lifecycleSupport. If this
      * Lifecycle has no listeners registered, a zero-length array is returned.
      */
     public LifecycleListener[] findLifecycleListeners() {
@@ -148,7 +150,7 @@ public final class LifecycleSupport {
 
 
     /**
-     * Notify all lifecycle event listeners that a particular event has
+     * Notify all lifecycleSupport event listeners that a particular event has
      * occurred for this Container.  The default implementation performs
      * this notification synchronously using the calling thread.
      *
@@ -156,20 +158,23 @@ public final class LifecycleSupport {
      * @param data Event data
      */
     public void fireLifecycleEvent(String type, Object data) {
-
+        // 产生一个Event
         LifecycleEvent event = new LifecycleEvent(lifecycle, type, data);
-        LifecycleListener interested[] = null;
-        synchronized (listeners) {
-            interested = (LifecycleListener[]) listeners.clone();
-        }
-        for (int i = 0; i < interested.length; i++)
-            interested[i].lifecycleEvent(event);
 
+        LifecycleListener interested[];
+
+        synchronized (listeners) {
+            interested = listeners.clone();
+        }
+
+        for (int i = 0; i < interested.length; i++) {
+            interested[i].lifecycleEvent(event);
+        }
     }
 
 
     /**
-     * Remove a lifecycle event listener from this component.
+     * Remove a lifecycleSupport event listener from this component.
      *
      * @param listener The listener to remove
      */
@@ -196,6 +201,5 @@ public final class LifecycleSupport {
         }
 
     }
-
 
 }

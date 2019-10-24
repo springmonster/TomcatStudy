@@ -79,7 +79,7 @@ import java.io.PrintWriter;
 /**
  * Convenience base class for <b>Logger</b> implementations.  The only
  * method that must be implemented is <code>log(String msg)</code>, plus
- * any property setting and lifecycle methods required for configuration.
+ * any property setting and lifecycleSupport methods required for configuration.
  *
  * @author Craig R. McClanahan
  * @version $Revision: 1.5 $ $Date: 2002/01/25 20:12:20 $

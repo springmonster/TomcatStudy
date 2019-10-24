@@ -184,7 +184,7 @@ public final class InstanceEvent
 
     /**
      * Construct a new InstanceEvent with the specified parameters.  This
-     * constructor is used for filter lifecycle events.
+     * constructor is used for filter lifecycleSupport events.
      *
      * @param wrapper Wrapper managing this servlet instance
      * @param filter  Filter instance for which this event occurred
@@ -203,7 +203,7 @@ public final class InstanceEvent
 
     /**
      * Construct a new InstanceEvent with the specified parameters.  This
-     * constructor is used for filter lifecycle events.
+     * constructor is used for filter lifecycleSupport events.
      *
      * @param wrapper   Wrapper managing this servlet instance
      * @param filter    Filter instance for which this event occurred
@@ -276,7 +276,7 @@ public final class InstanceEvent
 
     /**
      * Construct a new InstanceEvent with the specified parameters.  This
-     * constructor is used for processing servlet lifecycle events.
+     * constructor is used for processing servlet lifecycleSupport events.
      *
      * @param wrapper Wrapper managing this servlet instance
      * @param servlet Servlet instance for which this event occurred
@@ -295,7 +295,7 @@ public final class InstanceEvent
 
     /**
      * Construct a new InstanceEvent with the specified parameters.  This
-     * constructor is used for processing servlet lifecycle events.
+     * constructor is used for processing servlet lifecycleSupport events.
      *
      * @param wrapper   Wrapper managing this servlet instance
      * @param servlet   Servlet instance for which this event occurred

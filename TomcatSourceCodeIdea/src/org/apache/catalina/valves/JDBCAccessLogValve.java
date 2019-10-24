@@ -233,7 +233,7 @@ public final class JDBCAccessLogValve
 
 
     /**
-     * The lifecycle event support for this component.
+     * The lifecycleSupport event support for this component.
      */
     protected LifecycleSupport lifecycle = new LifecycleSupport(this);
 
@@ -505,7 +505,7 @@ public final class JDBCAccessLogValve
 
 
     /**
-     * Get the lifecycle listeners associated with this lifecycle. If this
+     * Get the lifecycleSupport listeners associated with this lifecycleSupport. If this
      * Lifecycle has no listeners registered, a zero-length array is returned.
      */
     public LifecycleListener[] findLifecycleListeners() {
@@ -530,7 +530,7 @@ public final class JDBCAccessLogValve
     /**
      * Invoked by Tomcat on startup. The database connection is set here.
      *
-     * @throws LifecycleException Can be thrown on lifecycle
+     * @throws LifecycleException Can be thrown on lifecycleSupport
      *                            inconsistencies or on database errors (as a wrapped SQLException).
      */
     public void start() throws LifecycleException {
@@ -581,7 +581,7 @@ public final class JDBCAccessLogValve
     /**
      * Invoked by tomcat on shutdown. The database connection is closed here.
      *
-     * @throws LifecycleException Can be thrown on lifecycle
+     * @throws LifecycleException Can be thrown on lifecycleSupport
      *                            inconsistencies or on database errors (as a wrapped SQLException).
      */
     public void stop() throws LifecycleException {

@@ -279,7 +279,7 @@ public final class UserConfig
     /**
      * Process the START event for an associated Host.
      *
-     * @param event The lifecycle event that has occurred
+     * @param event The lifecycleSupport event that has occurred
      */
     public void lifecycleEvent(LifecycleEvent event) {
 

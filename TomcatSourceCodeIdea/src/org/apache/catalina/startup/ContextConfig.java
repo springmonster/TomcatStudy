@@ -181,7 +181,7 @@ public final class ContextConfig
     /**
      * Process the START event for an associated Context.
      *
-     * @param event The lifecycle event that has occurred
+     * @param event The lifecycleSupport event that has occurred
      */
     public void lifecycleEvent(LifecycleEvent event) {
 

@@ -106,7 +106,7 @@ public abstract class PersistentManagerBase
 
 
     /**
-     * The lifecycle event support for this component.
+     * The lifecycleSupport event support for this component.
      */
     protected LifecycleSupport lifecycle = new LifecycleSupport(this);
 
@@ -764,7 +764,7 @@ public abstract class PersistentManagerBase
 
 
     /**
-     * Add a lifecycle event listener to this component.
+     * Add a lifecycleSupport event listener to this component.
      *
      * @param listener The listener to add
      */
@@ -776,7 +776,7 @@ public abstract class PersistentManagerBase
 
 
     /**
-     * Get the lifecycle listeners associated with this lifecycle. If this
+     * Get the lifecycleSupport listeners associated with this lifecycleSupport. If this
      * Lifecycle has no listeners registered, a zero-length array is returned.
      */
     public LifecycleListener[] findLifecycleListeners() {
@@ -787,7 +787,7 @@ public abstract class PersistentManagerBase
 
 
     /**
-     * Remove a lifecycle event listener from this component.
+     * Remove a lifecycleSupport event listener from this component.
      *
      * @param listener The listener to remove
      */

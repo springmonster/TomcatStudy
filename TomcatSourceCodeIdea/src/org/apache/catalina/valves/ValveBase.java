@@ -77,7 +77,7 @@ import java.io.IOException;
  * A subclass <strong>MUST</strong> implement an <code>invoke()</code>
  * method to provide the required functionality, and <strong>MAY</strong>
  * implement the <code>Lifecycle</code> interface to provide configuration
- * management and lifecycle support.
+ * management and lifecycleSupport support.
  *
  * @author Craig R. McClanahan
  * @version $Revision: 1.4 $ $Date: 2002/01/25 20:12:27 $

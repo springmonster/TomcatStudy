@@ -190,7 +190,7 @@ public class WebappLoader
 
 
     /**
-     * The lifecycle event support for this component.
+     * The lifecycleSupport event support for this component.
      */
     protected LifecycleSupport lifecycle = new LifecycleSupport(this);
 
@@ -573,7 +573,7 @@ public class WebappLoader
 
 
     /**
-     * Add a lifecycle event listener to this component.
+     * Add a lifecycleSupport event listener to this component.
      *
      * @param listener The listener to add
      */
@@ -585,7 +585,7 @@ public class WebappLoader
 
 
     /**
-     * Get the lifecycle listeners associated with this lifecycle. If this
+     * Get the lifecycleSupport listeners associated with this lifecycleSupport. If this
      * Lifecycle has no listeners registered, a zero-length array is returned.
      */
     public LifecycleListener[] findLifecycleListeners() {
@@ -596,7 +596,7 @@ public class WebappLoader
 
 
     /**
-     * Remove a lifecycle event listener from this component.
+     * Remove a lifecycleSupport event listener from this component.
      *
      * @param listener The listener to remove
      */
@@ -610,7 +610,7 @@ public class WebappLoader
     /**
      * Start this component, initializing our associated class loader.
      *
-     * @throws LifecycleException if a lifecycle error occurs
+     * @throws LifecycleException if a lifecycleSupport error occurs
      */
     public void start() throws LifecycleException {
 
@@ -683,7 +683,7 @@ public class WebappLoader
     /**
      * Stop this component, finalizing our associated class loader.
      *
-     * @throws LifecycleException if a lifecycle error occurs
+     * @throws LifecycleException if a lifecycleSupport error occurs
      */
     public void stop() throws LifecycleException {
 

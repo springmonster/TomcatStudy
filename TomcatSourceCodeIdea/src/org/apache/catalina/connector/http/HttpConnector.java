@@ -86,7 +86,7 @@ public final class HttpConnector implements Connector, Lifecycle, Runnable {
     private static final String info = "org.apache.catalina.connector.http.HttpConnector/1.0";
 
     /**
-     * The lifecycle event support for this component.
+     * The lifecycleSupport event support for this component.
      */
     protected LifecycleSupport lifecycle = new LifecycleSupport(this);
 
@@ -947,7 +947,7 @@ public final class HttpConnector implements Connector, Lifecycle, Runnable {
     // ------------------------------------------------------ Lifecycle Methods
 
     /**
-     * Add a lifecycle event listener to this component.
+     * Add a lifecycleSupport event listener to this component.
      *
      * @param listener The listener to add
      */
@@ -958,7 +958,7 @@ public final class HttpConnector implements Connector, Lifecycle, Runnable {
     }
 
     /**
-     * Get the lifecycle listeners associated with this lifecycle. If this Lifecycle
+     * Get the lifecycleSupport listeners associated with this lifecycleSupport. If this Lifecycle
      * has no listeners registered, a zero-length array is returned.
      */
     public LifecycleListener[] findLifecycleListeners() {
@@ -968,7 +968,7 @@ public final class HttpConnector implements Connector, Lifecycle, Runnable {
     }
 
     /**
-     * Remove a lifecycle event listener from this component.
+     * Remove a lifecycleSupport event listener from this component.
      *
      * @param listener The listener to add
      */

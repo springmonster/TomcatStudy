@@ -72,7 +72,7 @@ final class StandardWrapperValve
 
     /**
      * Invoke the servlet we are managing, respecting the rules regarding
-     * servlet lifecycle and SingleThreadModel support.
+     * servlet lifecycleSupport and SingleThreadModel support.
      *
      * @param request      Request to be processed
      * @param response     Response to be produced

@@ -163,7 +163,7 @@ final class HttpProcessor
 
 
     /**
-     * The lifecycle event support for this component.
+     * The lifecycleSupport event support for this component.
      */
     private LifecycleSupport lifecycle = new LifecycleSupport(this);
 
@@ -845,7 +845,7 @@ final class HttpProcessor
 
 
     /**
-     * Add a lifecycle event listener to this component.
+     * Add a lifecycleSupport event listener to this component.
      *
      * @param listener The listener to add
      */
@@ -857,7 +857,7 @@ final class HttpProcessor
 
 
     /**
-     * Get the lifecycle listeners associated with this lifecycle. If this
+     * Get the lifecycleSupport listeners associated with this lifecycleSupport. If this
      * Lifecycle has no listeners registered, a zero-length array is returned.
      */
     public LifecycleListener[] findLifecycleListeners() {
@@ -868,7 +868,7 @@ final class HttpProcessor
 
 
     /**
-     * Remove a lifecycle event listener from this component.
+     * Remove a lifecycleSupport event listener from this component.
      *
      * @param listener The listener to add
      */

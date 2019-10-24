@@ -1225,7 +1225,7 @@ public class StandardDefaultContext
     /**
      * Process the START event for an associated Context.
      *
-     * @param event The lifecycle event that has occurred
+     * @param event The lifecycleSupport event that has occurred
      */
     public void lifecycleEvent(LifecycleEvent event) {
 
@@ -1306,7 +1306,7 @@ public class StandardDefaultContext
             // Remove listener from the NamingResource listener list
             namingResources.removePropertyChangeListener(listener);
 
-            // Remove listener from lifecycle listeners
+            // Remove listener from lifecycleSupport listeners
             context.removeLifecycleListener(this);
 
         }

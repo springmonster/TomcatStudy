@@ -178,7 +178,7 @@ public class ServerLifecycleListener
             /*
             // Ignore events from StandardContext objects to avoid
             // reregistering the context
-            if (lifecycle instanceof StandardContext)
+            if (lifecycleSupport instanceof StandardContext)
                 return;
             createMBeans();
             */

@@ -136,7 +136,7 @@ public final class InstanceSupport {
 
 
     /**
-     * Add a lifecycle event listener to this component.
+     * Add a lifecycleSupport event listener to this component.
      *
      * @param listener The listener to add
      */
@@ -155,7 +155,7 @@ public final class InstanceSupport {
 
 
     /**
-     * Notify all lifecycle event listeners that a particular event has
+     * Notify all lifecycleSupport event listeners that a particular event has
      * occurred for this Container.  The default implementation performs
      * this notification synchronously using the calling thread.
      *
@@ -179,7 +179,7 @@ public final class InstanceSupport {
 
 
     /**
-     * Notify all lifecycle event listeners that a particular event has
+     * Notify all lifecycleSupport event listeners that a particular event has
      * occurred for this Container.  The default implementation performs
      * this notification synchronously using the calling thread.
      *
@@ -206,7 +206,7 @@ public final class InstanceSupport {
 
 
     /**
-     * Notify all lifecycle event listeners that a particular event has
+     * Notify all lifecycleSupport event listeners that a particular event has
      * occurred for this Container.  The default implementation performs
      * this notification synchronously using the calling thread.
      *
@@ -235,7 +235,7 @@ public final class InstanceSupport {
 
 
     /**
-     * Notify all lifecycle event listeners that a particular event has
+     * Notify all lifecycleSupport event listeners that a particular event has
      * occurred for this Container.  The default implementation performs
      * this notification synchronously using the calling thread.
      *
@@ -266,7 +266,7 @@ public final class InstanceSupport {
 
 
     /**
-     * Notify all lifecycle event listeners that a particular event has
+     * Notify all lifecycleSupport event listeners that a particular event has
      * occurred for this Container.  The default implementation performs
      * this notification synchronously using the calling thread.
      *
@@ -290,7 +290,7 @@ public final class InstanceSupport {
 
 
     /**
-     * Notify all lifecycle event listeners that a particular event has
+     * Notify all lifecycleSupport event listeners that a particular event has
      * occurred for this Container.  The default implementation performs
      * this notification synchronously using the calling thread.
      *
@@ -317,7 +317,7 @@ public final class InstanceSupport {
 
 
     /**
-     * Notify all lifecycle event listeners that a particular event has
+     * Notify all lifecycleSupport event listeners that a particular event has
      * occurred for this Container.  The default implementation performs
      * this notification synchronously using the calling thread.
      *
@@ -346,7 +346,7 @@ public final class InstanceSupport {
 
 
     /**
-     * Notify all lifecycle event listeners that a particular event has
+     * Notify all lifecycleSupport event listeners that a particular event has
      * occurred for this Container.  The default implementation performs
      * this notification synchronously using the calling thread.
      *
@@ -377,7 +377,7 @@ public final class InstanceSupport {
 
 
     /**
-     * Remove a lifecycle event listener from this component.
+     * Remove a lifecycleSupport event listener from this component.
      *
      * @param listener The listener to remove
      */
