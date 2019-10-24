@@ -277,6 +277,7 @@ public class FileLogger
         String tsDate = tsString.substring(0, 10);
 
         // If the date has changed, switch log files
+        // 双重检查？？？
         if (!date.equals(tsDate)) {
             synchronized (this) {
                 if (!date.equals(tsDate)) {

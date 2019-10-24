@@ -1,0 +1,18 @@
+2019-10-24 16:15:57 HttpConnector Opening server socket on all host IP addresses
+2019-10-24 16:15:57 HttpConnector[10001] Starting background thread
+2019-10-24 16:15:57 HttpProcessor[10001][0] Starting background thread
+2019-10-24 16:15:57 HttpProcessor[10001][1] Starting background thread
+2019-10-24 16:15:57 HttpProcessor[10001][2] Starting background thread
+2019-10-24 16:15:57 HttpProcessor[10001][3] Starting background thread
+2019-10-24 16:15:57 HttpProcessor[10001][4] Starting background thread
+2019-10-24 16:15:57 starting Context
+2019-10-24 16:15:57 Context started
+2019-10-24 16:18:04 HttpConnector Opening server socket on all host IP addresses
+2019-10-24 16:18:32 HttpConnector[10001] Starting background thread
+2019-10-24 16:18:32 HttpProcessor[10001][0] Starting background thread
+2019-10-24 16:18:32 HttpProcessor[10001][1] Starting background thread
+2019-10-24 16:18:32 HttpProcessor[10001][2] Starting background thread
+2019-10-24 16:18:32 HttpProcessor[10001][3] Starting background thread
+2019-10-24 16:18:32 HttpProcessor[10001][4] Starting background thread
+2019-10-24 16:18:32 starting Context
+2019-10-24 16:18:32 Context started
