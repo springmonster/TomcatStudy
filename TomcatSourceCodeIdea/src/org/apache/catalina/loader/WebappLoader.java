@@ -900,7 +900,7 @@ public class WebappLoader
                     String path = null;
                     try {
                         path = libDir.getCanonicalPath() + File.separator;
-                    } catch (IOException e) {
+                    } catch (IOException ignored) {
                     }
                     if (path != null)
                         classLoader.addPermission(path);
@@ -914,7 +914,7 @@ public class WebappLoader
                         String path = null;
                         try {
                             path = libDir.getCanonicalPath() + File.separator;
-                        } catch (IOException e) {
+                        } catch (IOException ignored) {
                         }
                         classLoader.addPermission(path);
                     }
@@ -925,7 +925,7 @@ public class WebappLoader
                         try {
                             path = classesDir.getCanonicalPath()
                                     + File.separator;
-                        } catch (IOException e) {
+                        } catch (IOException ignored) {
                         }
                         classLoader.addPermission(path);
                     }
@@ -933,7 +933,7 @@ public class WebappLoader
 
             }
 
-        } catch (MalformedURLException e) {
+        } catch (MalformedURLException ignored) {
         }
 
     }
@@ -1330,14 +1330,18 @@ public class WebappLoader
 
             try {
                 // Perform our modification check
-                if (!classLoader.modified())
+                // 这里来检查是否有没有被修改
+                if (!classLoader.modified()) {
+                    // 这里如果没有被修改，则直接continue，不会执行下面的notifyContext方法
                     continue;
+                }
             } catch (Exception e) {
                 log(sm.getString("webappLoader.failModifiedCheck"), e);
                 continue;
             }
 
             // Handle a need for reloading
+            // Reload
             notifyContext();
             break;
 
