@@ -198,9 +198,7 @@ final class StandardContextValve
 
         try {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, requestURI);
-        } catch (IllegalStateException e) {
-            ;
-        } catch (IOException e) {
+        } catch (IllegalStateException | IOException ignored) {
             ;
         }
 
@@ -219,9 +217,7 @@ final class StandardContextValve
 
         try {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, requestURI);
-        } catch (IllegalStateException e) {
-            ;
-        } catch (IOException e) {
+        } catch (IllegalStateException | IOException ignored) {
             ;
         }
 
