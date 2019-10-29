@@ -1,14 +1,9 @@
 package ex13.pyrmont.startup;
 
 //explain Host
+
 import ex13.pyrmont.core.SimpleContextConfig;
-import org.apache.catalina.Connector;
-import org.apache.catalina.Context;
-import org.apache.catalina.Host;
-import org.apache.catalina.Lifecycle;
-import org.apache.catalina.LifecycleListener;
-import org.apache.catalina.Loader;
-import org.apache.catalina.Wrapper;
+import org.apache.catalina.*;
 import org.apache.catalina.connector.http.HttpConnector;
 import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.core.StandardHost;
@@ -17,52 +12,52 @@ import org.apache.catalina.loader.WebappLoader;
 
 
 public final class Bootstrap1 {
-  public static void main(String[] args) {
-    //invoke: http://localhost:8080/app1/Primitive or http://localhost:8080/app1/Modern
-    System.setProperty("catalina.base", System.getProperty("user.dir"));
-    Connector connector = new HttpConnector();
+    public static void main(String[] args) {
+        //invoke: http://localhost:8080/app1/Primitive or http://localhost:8080/app1/Modern
+        System.setProperty("catalina.base", System.getProperty("user.dir"));
 
-    Wrapper wrapper1 = new StandardWrapper();
-    wrapper1.setName("Primitive");
-    wrapper1.setServletClass("PrimitiveServlet");
-    Wrapper wrapper2 = new StandardWrapper();
-    wrapper2.setName("Modern");
-    wrapper2.setServletClass("ModernServlet");
+        Connector connector = new HttpConnector();
 
-    Context context = new StandardContext();
-    // StandardContext's start method adds a default mapper
-    context.setPath("/app1");
-    context.setDocBase("app1");
+        Wrapper wrapper1 = new StandardWrapper();
+        wrapper1.setName("Primitive");
+        wrapper1.setServletClass("PrimitiveServlet");
+        Wrapper wrapper2 = new StandardWrapper();
+        wrapper2.setName("Modern");
+        wrapper2.setServletClass("ModernServlet");
 
-    context.addChild(wrapper1);
-    context.addChild(wrapper2);
+        Context context = new StandardContext();
+        // StandardContext's start method adds a default mapper
+        context.setPath("/app1");
+        context.setDocBase("app1");
 
-    LifecycleListener listener = new SimpleContextConfig();
-    ((Lifecycle) context).addLifecycleListener(listener);
+        context.addChild(wrapper1);
+        context.addChild(wrapper2);
 
-    Host host = new StandardHost();
-    host.addChild(context);
-    host.setName("localhost");
-    host.setAppBase("webapps");
+        LifecycleListener listener = new SimpleContextConfig();
+        ((Lifecycle) context).addLifecycleListener(listener);
 
-    Loader loader = new WebappLoader();
-    context.setLoader(loader);
-    // context.addServletMapping(pattern, name);
-    context.addServletMapping("/Primitive", "Primitive");
-    context.addServletMapping("/Modern", "Modern");
+        Host host = new StandardHost();
+        host.addChild(context);
+        host.setName("localhost");
+        host.setAppBase("webapps");
 
-    connector.setContainer(host);
-    try {
-      connector.initialize();
-      ((Lifecycle) connector).start();
-      ((Lifecycle) host).start();
-  
-      // make the application wait until we press a key.
-      System.in.read();
-      ((Lifecycle) host).stop();
+        Loader loader = new WebappLoader();
+        context.setLoader(loader);
+        // context.addServletMapping(pattern, name);
+        context.addServletMapping("/Primitive", "Primitive");
+        context.addServletMapping("/Modern", "Modern");
+
+        connector.setContainer(host);
+        try {
+            connector.initialize();
+            ((Lifecycle) connector).start();
+            ((Lifecycle) host).start();
+
+            // make the application wait until we press a key.
+            System.in.read();
+            ((Lifecycle) host).stop();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-    catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
 }
