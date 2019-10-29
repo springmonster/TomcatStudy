@@ -3328,8 +3328,7 @@ public class StandardContext
         if (ok && (resources instanceof ProxyDirContext)) {
             DirContext dirContext =
                     ((ProxyDirContext) resources).getDirContext();
-            if ((dirContext != null)
-                    && (dirContext instanceof BaseDirContext)) {
+            if ((dirContext instanceof BaseDirContext)) {
                 ((BaseDirContext) dirContext).setDocBase(getBasePath());
                 ((BaseDirContext) dirContext).allocate();
             }
@@ -3408,16 +3407,16 @@ public class StandardContext
 
                 // Start our Mappers, if any
                 Mapper mappers[] = findMappers();
-                for (int i = 0; i < mappers.length; i++) {
-                    if (mappers[i] instanceof Lifecycle)
-                        ((Lifecycle) mappers[i]).start();
+                for (Mapper mapper1 : mappers) {
+                    if (mapper1 instanceof Lifecycle)
+                        ((Lifecycle) mapper1).start();
                 }
 
                 // Start our child containers, if any
                 Container children[] = findChildren();
-                for (int i = 0; i < children.length; i++) {
-                    if (children[i] instanceof Lifecycle)
-                        ((Lifecycle) children[i]).start();
+                for (Container child : children) {
+                    if (child instanceof Lifecycle)
+                        ((Lifecycle) child).start();
                 }
 
                 // Start the Valves in our pipeline (including the basic),
