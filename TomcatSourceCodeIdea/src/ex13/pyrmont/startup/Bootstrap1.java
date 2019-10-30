@@ -11,6 +11,14 @@ import org.apache.catalina.core.StandardWrapper;
 import org.apache.catalina.loader.WebappLoader;
 
 
+/**
+ * @see org.apache.catalina.core.StandardHost
+ * @see org.apache.catalina.core.StandardHostValve
+ * @see StandardContext
+ * @see org.apache.catalina.core.StandardContextValve
+ * @see StandardWrapper
+ * @see org.apache.catalina.core.StandardWrapperValve
+ */
 public final class Bootstrap1 {
     public static void main(String[] args) {
         //invoke: http://localhost:8080/app1/Primitive or http://localhost:8080/app1/Modern
@@ -27,6 +35,7 @@ public final class Bootstrap1 {
 
         Context context = new StandardContext();
         // StandardContext's start method adds a default mapper
+        // 这里的setPath就是将StandardContext的名称设置为/app1
         context.setPath("/app1");
         context.setDocBase("app1");
 
