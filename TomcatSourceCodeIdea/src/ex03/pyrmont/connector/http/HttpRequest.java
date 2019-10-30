@@ -197,7 +197,7 @@ public class HttpRequest implements HttpServletRequest {
      * this Request. The default implementation creates an instance of RequestStream
      * associated with this request, but this can be overridden if necessary.
      *
-     * @exception IOException if an input/output error occurs
+     * @throws IOException if an input/output error occurs
      */
     public ServletInputStream createInputStream() throws IOException {
         return (new RequestStream(this));
