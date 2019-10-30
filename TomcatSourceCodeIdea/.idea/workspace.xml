@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e36eecb-158b-4f91-a479-13b95443f369" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ex14/pyrmont/startup/Bootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ex14/pyrmont/startup/Bootstrap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/catalina/core/StandardServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/apache/catalina/core/StandardServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/catalina/core/StandardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/apache/catalina/core/StandardService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/etc/employee1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/etc/employee2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/etc/ex14.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ex15/pyrmont/digestertest/Address.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ex15/pyrmont/digestertest/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ex15/pyrmont/digestertest/EmployeeRuleSet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ex15/pyrmont/digestertest/Office.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ex15/pyrmont/digestertest/Test01.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ex15/pyrmont/digestertest/Test02.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ex15/pyrmont/digestertest/Test03.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ex15/pyrmont/startup/Bootstrap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,87 +30,67 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/apache/catalina/Lifecycle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="154" column="16" selection-start-line="154" selection-start-column="16" selection-end-line="154" selection-end-column="16" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/myApp/WEB-INF/classes/ModernServlet.class">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/apache/catalina/connector/http/HttpConnector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="984" selection-start-line="984" selection-end-line="984" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/myApp/WEB-INF/classes/PrimitiveServlet.class">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ex14/pyrmont/startup/Bootstrap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="78" column="33" lean-forward="true" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/myApp/WEB-INF/classes/SessionServlet.class">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/apache/catalina/Server.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="164" column="16" selection-start-line="164" selection-start-column="16" selection-end-line="164" selection-end-column="16" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/webapps/app1/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/apache/catalina/core/StandardServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="2167" column="41" selection-start-line="2167" selection-start-column="41" selection-end-line="2167" selection-end-column="41" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/webapps/manager.xml">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/apache/naming/java/javaURLContextFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="96" column="13" selection-start-line="96" selection-start-column="13" selection-end-line="96" selection-end-column="13" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/webapps/myadmin.xml">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webroot/images/logo.gif">
-          <provider selected="true" editor-type-id="images" />
+        <entry file="file://$PROJECT_DIR$/src/ex15/pyrmont/digestertest/Test01.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="9" column="69" selection-start-line="9" selection-start-column="60" selection-end-line="9" selection-end-column="69" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.classpath">
+        <entry file="file://$PROJECT_DIR$/etc/ex14.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="23" column="46" lean-forward="true" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
+            <state relative-caret-position="171">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/apache/catalina/core/StandardService.java">
+        <entry file="file://$PROJECT_DIR$/etc/employee1.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="563" column="41" lean-forward="true" selection-start-line="563" selection-start-column="41" selection-end-line="563" selection-end-column="41" />
+            <state relative-caret-position="57">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ex14/pyrmont/startup/Stopper.java">
+        <entry file="file://$PROJECT_DIR$/etc/employee2.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="15" column="32" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="22" />
+            <state relative-caret-position="171">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
@@ -138,8 +127,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/ex05/pyrmont/valves/ClientIPLoggerValve.java" />
-        <option value="$PROJECT_DIR$/src/ex05/pyrmont/core/SimpleLoader.java" />
         <option value="$PROJECT_DIR$/src/ex05/pyrmont/startup/Bootstrap2.java" />
         <option value="$PROJECT_DIR$/src/pyrmont/core/SimpleContextValve.java" />
         <option value="$PROJECT_DIR$/src/ex0502/pyrmont/core/SimpleContextValve.java" />
@@ -187,6 +174,10 @@
         <option value="$PROJECT_DIR$/src/org/apache/catalina/connector/http/HttpConnector.java" />
         <option value="$PROJECT_DIR$/src/org/apache/catalina/core/StandardServer.java" />
         <option value="$PROJECT_DIR$/src/ex14/pyrmont/startup/Bootstrap.java" />
+        <option value="$PROJECT_DIR$/src/ex15/pyrmont/startup/Bootstrap.java" />
+        <option value="$PROJECT_DIR$/src/ex15/pyrmont/digestertest/Test01.java" />
+        <option value="$PROJECT_DIR$/etc/ex14.xml" />
+        <option value="$PROJECT_DIR$/etc/employee2.xml" />
       </list>
     </option>
   </component>
@@ -215,6 +206,16 @@
             <path>
               <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
               <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
+              <item name="conf" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
+              <item name="etc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -228,7 +229,7 @@
               <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pyrmont" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="digestertest" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
@@ -236,249 +237,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pyrmont" type="462c0819:PsiDirectoryNode" />
               <item name="startup" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="catalina" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="catalina" type="462c0819:PsiDirectoryNode" />
-              <item name="authenticator" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="catalina" type="462c0819:PsiDirectoryNode" />
-              <item name="cluster" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="catalina" type="462c0819:PsiDirectoryNode" />
-              <item name="connector" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="catalina" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="catalina" type="462c0819:PsiDirectoryNode" />
-              <item name="deploy" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="catalina" type="462c0819:PsiDirectoryNode" />
-              <item name="loader" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="catalina" type="462c0819:PsiDirectoryNode" />
-              <item name="logger" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="catalina" type="462c0819:PsiDirectoryNode" />
-              <item name="mbeans" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="catalina" type="462c0819:PsiDirectoryNode" />
-              <item name="net" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="catalina" type="462c0819:PsiDirectoryNode" />
-              <item name="realm" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="catalina" type="462c0819:PsiDirectoryNode" />
-              <item name="servlets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="catalina" type="462c0819:PsiDirectoryNode" />
-              <item name="session" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="catalina" type="462c0819:PsiDirectoryNode" />
-              <item name="ssi" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="catalina" type="462c0819:PsiDirectoryNode" />
-              <item name="startup" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="catalina" type="462c0819:PsiDirectoryNode" />
-              <item name="users" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="catalina" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="naming" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="naming" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="naming" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="apache" type="462c0819:PsiDirectoryNode" />
-              <item name="naming" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="jndi" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="webapps" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="webapps" type="462c0819:PsiDirectoryNode" />
-              <item name="app1" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="webapps" type="462c0819:PsiDirectoryNode" />
-              <item name="app1" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="webapps" type="462c0819:PsiDirectoryNode" />
-              <item name="app1" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="webroot" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="webroot" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="work" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="work" type="462c0819:PsiDirectoryNode" />
-              <item name="_" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="work" type="462c0819:PsiDirectoryNode" />
-              <item name="_" type="462c0819:PsiDirectoryNode" />
-              <item name="_" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="work" type="462c0819:PsiDirectoryNode" />
-              <item name="_" type="462c0819:PsiDirectoryNode" />
-              <item name="localhost" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="work" type="462c0819:PsiDirectoryNode" />
-              <item name="_" type="462c0819:PsiDirectoryNode" />
-              <item name="localhost" type="462c0819:PsiDirectoryNode" />
-              <item name="app1" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -490,7 +248,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572419931700" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572420286373" />
     <property name="last_opened_file_path" value="D:/tapp-be" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -501,8 +259,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\TomcatStudy\TomcatSourceCodeIdea\src" />
       <recent name="D:\TomcatStudy\TomcatSourceCodeIdea" />
+      <recent name="D:\TomcatStudy\TomcatSourceCodeIdea\src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -607,12 +365,12 @@
       <workItem from="1571814185184" duration="4280000" />
       <workItem from="1571895852365" duration="7747000" />
       <workItem from="1571965245563" duration="1717000" />
-      <workItem from="1572224533181" duration="36520000" />
+      <workItem from="1572224533181" duration="36875000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68588000" />
+    <option name="totallyTimeSpent" value="68943000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -637,7 +395,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.11986682" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.1864595" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" visible="true" weight="0.281909" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.281909" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32963374" />
@@ -864,101 +622,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/org/apache/catalina/core/ApplicationContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="623" column="27" selection-start-line="623" selection-start-column="19" selection-end-line="623" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot/FileLog_2019-10-24.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="36" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ex13/pyrmont/core/SimpleContextConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/apache/naming/resources/FileDirContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="192" selection-start-line="192" selection-end-line="192" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/conf/server.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/conf/tomcat-users.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webapps/app1/WEB-INF/classes/PrimitiveServlet.class">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webapps/app1/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webapps/manager.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webapps/myadmin.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/apache/catalina/Connector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="196" column="16" selection-start-line="196" selection-start-column="16" selection-end-line="196" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/apache/catalina/connector/http/HttpProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="967" lean-forward="true" selection-start-line="967" selection-end-line="967" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/apache/catalina/valves/ErrorDispatcherValve.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="92" column="13" selection-start-line="92" selection-start-column="13" selection-end-line="92" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/apache/catalina/valves/ErrorReportValve.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="195" selection-start-line="195" selection-end-line="195" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/util/HashMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="554" column="13" selection-start-line="554" selection-start-column="13" selection-end-line="554" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ex11/pyrmont/startup/Bootstrap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="30" column="20" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/apache/catalina/Container.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="293" column="16" selection-start-line="293" selection-start-column="16" selection-end-line="293" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/beans/PropertyChangeSupport.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
@@ -1190,6 +853,95 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
           <caret line="23" column="46" lean-forward="true" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ex15/pyrmont/startup/Bootstrap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ex15/pyrmont/digestertest/Test03.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ex15/pyrmont/digestertest/Address.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ex15/pyrmont/digestertest/Employee.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-24">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ex15/pyrmont/digestertest/EmployeeRuleSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="33" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/server.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5249" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/tomcat-users.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myApp/WEB-INF/classes/ModernServlet.class">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myApp/WEB-INF/classes/PrimitiveServlet.class">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myApp/WEB-INF/classes/SessionServlet.class">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapps/app1/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapps/manager.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapps/myadmin.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ex15/pyrmont/digestertest/Test01.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="69" selection-start-line="9" selection-start-column="60" selection-end-line="9" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/etc/employee1.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/etc/employee2.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/etc/ex14.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
