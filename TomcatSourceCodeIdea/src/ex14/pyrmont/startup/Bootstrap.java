@@ -12,9 +12,11 @@ public final class Bootstrap {
         System.setProperty("catalina.base", System.getProperty("user.dir"));
         Connector connector = new HttpConnector();
 
+
         Wrapper wrapper1 = new StandardWrapper();
         wrapper1.setName("Primitive");
         wrapper1.setServletClass("PrimitiveServlet");
+
         Wrapper wrapper2 = new StandardWrapper();
         wrapper2.setName("Modern");
         wrapper2.setServletClass("ModernServlet");
@@ -47,12 +49,16 @@ public final class Bootstrap {
 
         Service service = new StandardService();
         service.setName("Stand-alone Service");
-        Server server = new StandardServer();
-        server.addService(service);
+
         service.addConnector(connector);
 
         //StandardService class's setContainer will call all its connector's setContainer method
         service.setContainer(engine);
+
+
+        Server server = new StandardServer();
+        server.addService(service);
+
 
         // Start the new server
         if (server instanceof Lifecycle) {

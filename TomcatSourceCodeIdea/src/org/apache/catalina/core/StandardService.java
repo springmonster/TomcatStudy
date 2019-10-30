@@ -92,7 +92,7 @@ public final class StandardService
     /**
      * The set of Connectors associated with this Service.
      */
-    private Connector connectors[] = new Connector[0];
+    private Connector[] connectors = new Connector[0];
 
 
     /**
@@ -178,7 +178,7 @@ public final class StandardService
     public void setContainer(Container container) {
 
         Container oldContainer = this.container;
-        if ((oldContainer != null) && (oldContainer instanceof Engine))
+        if ((oldContainer instanceof Engine))
             ((Engine) oldContainer).setService(null);
         this.container = container;
         if ((this.container != null) && (this.container instanceof Engine))
@@ -187,7 +187,7 @@ public final class StandardService
                 (this.container instanceof Lifecycle)) {
             try {
                 ((Lifecycle) this.container).start();
-            } catch (LifecycleException e) {
+            } catch (LifecycleException ignored) {
                 ;
             }
         }
@@ -195,11 +195,10 @@ public final class StandardService
             for (int i = 0; i < connectors.length; i++)
                 connectors[i].setContainer(this.container);
         }
-        if (started && (oldContainer != null) &&
-                (oldContainer instanceof Lifecycle)) {
+        if (started && (oldContainer instanceof Lifecycle)) {
             try {
                 ((Lifecycle) oldContainer).stop();
-            } catch (LifecycleException e) {
+            } catch (LifecycleException ignored) {
                 ;
             }
         }
@@ -239,7 +238,7 @@ public final class StandardService
      */
     public String getInfo() {
 
-        return (this.info);
+        return (info);
 
     }
 
@@ -302,7 +301,7 @@ public final class StandardService
         synchronized (connectors) {
             connector.setContainer(this.container);
             connector.setService(this);
-            Connector results[] = new Connector[connectors.length + 1];
+            Connector[] results = new Connector[connectors.length + 1];
             System.arraycopy(connectors, 0, results, 0, connectors.length);
             results[connectors.length] = connector;
             connectors = results;
@@ -318,7 +317,7 @@ public final class StandardService
             if (started && (connector instanceof Lifecycle)) {
                 try {
                     ((Lifecycle) connector).start();
-                } catch (LifecycleException e) {
+                } catch (LifecycleException ignored) {
                     ;
                 }
             }
@@ -374,14 +373,14 @@ public final class StandardService
             if (started && (connectors[j] instanceof Lifecycle)) {
                 try {
                     ((Lifecycle) connectors[j]).stop();
-                } catch (LifecycleException e) {
+                } catch (LifecycleException ignored) {
                     ;
                 }
             }
             connectors[j].setContainer(null);
             connector.setService(null);
             int k = 0;
-            Connector results[] = new Connector[connectors.length - 1];
+            Connector[] results = new Connector[connectors.length - 1];
             for (int i = 0; i < connectors.length; i++) {
                 if (i != j)
                     results[k++] = connectors[i];

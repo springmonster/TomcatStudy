@@ -449,7 +449,7 @@ public final class StandardServer
             if (started && (service instanceof Lifecycle)) {
                 try {
                     ((Lifecycle) service).start();
-                } catch (LifecycleException e) {
+                } catch (LifecycleException ignored) {
                     ;
                 }
             }
@@ -531,6 +531,7 @@ public final class StandardServer
 
             // Match against our command string
             boolean match = command.toString().equals(shutdown);
+            // 如果命令是SHUTDOWN，则跳出while循环
             if (match) {
                 break;
             } else
@@ -2127,6 +2128,7 @@ public final class StandardServer
         started = true;
 
         // Start our defined Services
+        // 知道为什么用Lifecycle了吗？
         synchronized (services) {
             for (int i = 0; i < services.length; i++) {
                 if (services[i] instanceof Lifecycle)
