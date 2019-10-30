@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e36eecb-158b-4f91-a479-13b95443f369" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ex15/pyrmont/digestertest/Test02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ex15/pyrmont/digestertest/Test02.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work/_/localhost/app1/SESSIONS.ser" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ex16/pyrmont/shutdownhook/MySwingApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ex16/pyrmont/shutdownhook/MySwingAppWithShutdownHook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,11 +59,38 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webapps/app1/WEB-INF/web.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="32" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="32" />
+            <state relative-caret-position="266">
+              <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ex16/pyrmont/shutdownhook/MySwingApp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="146">
+              <caret line="46" column="31" lean-forward="true" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ex16/pyrmont/shutdownhook/MySwingAppWithShutdownHook.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="194">
+              <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/lang/Runtime.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="202">
+              <caret line="205" column="16" selection-start-line="205" selection-start-column="16" selection-end-line="205" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -84,33 +112,6 @@
             </state>
           </provider>
           <provider editor-type-id="ResourceBundle" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../HowTomcatWorks/lib/xercesImpl.jar!/org/apache/xerces/parsers/AbstractSAXParser.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="499" selection-start-line="499" selection-end-line="499" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../HowTomcatWorks/lib/xercesImpl.jar!/org/apache/xerces/parsers/XMLParser.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../HowTomcatWorks/lib/xercesImpl.jar!/org/apache/xerces/parsers/DTDConfiguration.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="213" selection-start-line="213" selection-end-line="213" />
-            </state>
-          </provider>
         </entry>
       </file>
     </leaf>
@@ -150,8 +151,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/ex0502/pyrmont/core/SimpleContextValve.java" />
-        <option value="$PROJECT_DIR$/src/ex0502/pyrmont/core/SimpleContext.java" />
         <option value="$PROJECT_DIR$/src/ex0502/pyrmont/core/SimpleLoader.java" />
         <option value="$PROJECT_DIR$/src/ex0502/pyrmont/startup/Bootstrap2.java" />
         <option value="$PROJECT_DIR$/src/ex05/pyrmont/core/SimpleWrapper.java" />
@@ -201,10 +200,12 @@
         <option value="$PROJECT_DIR$/etc/employee2.xml" />
         <option value="$PROJECT_DIR$/src/ex15/pyrmont/digestertest/Test02.java" />
         <option value="$PROJECT_DIR$/src/org/apache/catalina/startup/ContextConfig.java" />
+        <option value="$PROJECT_DIR$/src/ex16/pyrmont/shutdownhook/MySwingApp.java" />
+        <option value="$PROJECT_DIR$/src/ex16/pyrmont/shutdownhook/MySwingAppWithShutdownHook.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -254,6 +255,12 @@
             <path>
               <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
               <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="shutdownhook" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
               <item name="webapps" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -291,7 +298,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572424077500" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572425655214" />
     <property name="last_opened_file_path" value="D:/tapp-be" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -302,8 +309,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\TomcatStudy\TomcatSourceCodeIdea" />
+      <recent name="D:\TomcatStudy\TomcatSourceCodeIdea\src\ex16\pyrmont\shutdownhook" />
       <recent name="D:\TomcatStudy\TomcatSourceCodeIdea\src" />
+      <recent name="D:\TomcatStudy\TomcatSourceCodeIdea" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -318,13 +326,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Bootstrap">
-    <configuration name="Bootstrap (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ex14.pyrmont.startup.Bootstrap" />
+  <component name="RunManager" selected="Application.MySwingApp">
+    <configuration name="Bootstrap" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ex15.pyrmont.startup.Bootstrap" />
       <module name="TomcatSourceCodeIdea" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ex14.pyrmont.startup.*" />
+          <option name="PATTERN" value="ex15.pyrmont.startup.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -332,12 +340,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Bootstrap" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ex15.pyrmont.startup.Bootstrap" />
+    <configuration name="MySwingApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ex16.pyrmont.shutdownhook.MySwingApp" />
       <module name="TomcatSourceCodeIdea" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ex15.pyrmont.startup.*" />
+          <option name="PATTERN" value="ex16.pyrmont.shutdownhook.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -386,11 +394,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MySwingApp" />
         <item itemvalue="Application.Bootstrap" />
         <item itemvalue="Application.Test02" />
         <item itemvalue="Application.Test01" />
         <item itemvalue="Application.Stopper" />
-        <item itemvalue="Application.Bootstrap (3)" />
       </list>
     </recent_temporary>
   </component>
@@ -408,12 +416,12 @@
       <workItem from="1571814185184" duration="4280000" />
       <workItem from="1571895852365" duration="7747000" />
       <workItem from="1571965245563" duration="1717000" />
-      <workItem from="1572224533181" duration="40146000" />
+      <workItem from="1572224533181" duration="41977000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72214000" />
+    <option name="totallyTimeSpent" value="74045000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -425,8 +433,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1609808" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -437,7 +444,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.4572697" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2963374" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2963374" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.38512763" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -719,27 +726,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/jre/lib/rt.jar!/com/sun/xml/internal/fastinfoset/sax/SAXDocumentParser.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="212" column="16" selection-start-line="212" selection-start-column="16" selection-end-line="212" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/org/xml/sax/XMLReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="398" column="16" selection-start-line="398" selection-start-column="16" selection-end-line="398" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/etc/employee1.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ex15/pyrmont/digestertest/Employee.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -1060,8 +1046,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webapps/app1/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="32" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="32" />
+        <state relative-caret-position="266">
+          <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ex16/pyrmont/shutdownhook/MySwingApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="46" column="31" lean-forward="true" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/lang/Runtime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="205" column="16" selection-start-line="205" selection-start-column="16" selection-end-line="205" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ex16/pyrmont/shutdownhook/MySwingAppWithShutdownHook.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
         </state>
       </provider>
     </entry>
