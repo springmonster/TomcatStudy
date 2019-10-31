@@ -5,6 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e36eecb-158b-4f91-a479-13b95443f369" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/MySwingApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/MySwingAppWithShutdownHook.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/RunnableDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/ShutdownHookDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/ThreadDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/UseDigesterExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/UseRequestUtilExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/UseStringParserExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -21,24 +29,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../HowTomcatWorks/lib/commons-digester.jar!/org/apache/commons/digester/Digester.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11704">
-              <caret line="616" selection-start-line="616" selection-end-line="616" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/apache/catalina/startup/ContextConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3591">
-              <caret line="189" selection-start-line="189" selection-end-line="189" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/apache/catalina/startup/WebRuleSet.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -69,17 +59,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ex16/pyrmont/shutdownhook/MySwingApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="874">
+            <state relative-caret-position="413">
               <caret line="46" column="31" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ex16/pyrmont/shutdownhook/MySwingAppWithShutdownHook.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="14">
-              <caret line="34" column="27" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="27" />
+            <state relative-caret-position="608">
+              <caret line="32" selection-start-line="32" selection-end-line="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/MySwingApp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="30" column="27" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/MySwingAppWithShutdownHook.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="470">
+              <caret line="58" column="30" lean-forward="true" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -149,8 +157,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/ex0502/pyrmont/core/SimpleLoader.java" />
-        <option value="$PROJECT_DIR$/src/ex0502/pyrmont/startup/Bootstrap2.java" />
         <option value="$PROJECT_DIR$/src/ex05/pyrmont/core/SimpleWrapper.java" />
         <option value="$PROJECT_DIR$/src/ex05/pyrmont/valves/SimpleWrapperValve.java" />
         <option value="$PROJECT_DIR$/webroot/ModernServlet.java" />
@@ -200,6 +206,8 @@
         <option value="$PROJECT_DIR$/src/org/apache/catalina/startup/ContextConfig.java" />
         <option value="$PROJECT_DIR$/src/ex16/pyrmont/shutdownhook/MySwingApp.java" />
         <option value="$PROJECT_DIR$/src/ex16/pyrmont/shutdownhook/MySwingAppWithShutdownHook.java" />
+        <option value="$PROJECT_DIR$/src/test/MySwingApp.java" />
+        <option value="$PROJECT_DIR$/src/test/MySwingAppWithShutdownHook.java" />
       </list>
     </option>
   </component>
@@ -234,105 +242,7 @@
               <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
               <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pyrmont" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pyrmont" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pyrmont" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pyrmont" type="462c0819:PsiDirectoryNode" />
-              <item name="startup" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pyrmont" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pyrmont" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pyrmont" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pyrmont" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pyrmont" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pyrmont" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pyrmont" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pyrmont" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pyrmont" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pyrmont" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pyrmont" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pyrmont" type="462c0819:PsiDirectoryNode" />
-              <item name="digestertest" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TomcatSourceCodeIdea" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="shutdownhook" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TomcatSourceCodeIdea" type="b2602c69:ProjectViewProjectNode" />
@@ -374,7 +284,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572425655214" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572498613451" />
     <property name="last_opened_file_path" value="D:/tapp-be" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -385,6 +295,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\TomcatStudy\TomcatSourceCodeIdea\src\test" />
       <recent name="D:\TomcatStudy\TomcatSourceCodeIdea\src\ex16\pyrmont\shutdownhook" />
       <recent name="D:\TomcatStudy\TomcatSourceCodeIdea\src" />
       <recent name="D:\TomcatStudy\TomcatSourceCodeIdea" />
@@ -493,12 +404,12 @@
       <workItem from="1571895852365" duration="7747000" />
       <workItem from="1571965245563" duration="1717000" />
       <workItem from="1572224533181" duration="41977000" />
-      <workItem from="1572478598433" duration="2587000" />
+      <workItem from="1572478598433" duration="4839000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76632000" />
+    <option name="totallyTimeSpent" value="78884000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -513,7 +424,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16257995" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15565032" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -804,20 +715,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ex15/pyrmont/digestertest/Employee.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ex15/pyrmont/digestertest/Test01.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="35" lean-forward="true" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/etc/employee2.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -1114,13 +1011,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ex16/pyrmont/shutdownhook/MySwingApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="874">
-          <caret line="46" column="31" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/lang/Runtime.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3895">
@@ -1143,10 +1033,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ex16/pyrmont/shutdownhook/MySwingApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="46" column="31" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ex16/pyrmont/shutdownhook/MySwingAppWithShutdownHook.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14">
-          <caret line="34" column="27" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="27" />
+        <state relative-caret-position="608">
+          <caret line="32" selection-start-line="32" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/MySwingApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="30" column="27" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/MySwingAppWithShutdownHook.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="58" column="30" lean-forward="true" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
         </state>
       </provider>
     </entry>
