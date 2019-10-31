@@ -2,11 +2,8 @@ package ex02.pyrmont;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.net.URLStreamHandler;
@@ -27,9 +24,6 @@ public class ServletProcessor1 {
 
             urls[0] = new URL(null, repository, streamHandler);
             loader = new URLClassLoader(urls);
-        } catch (MalformedURLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -44,18 +38,12 @@ public class ServletProcessor1 {
             e.printStackTrace();
         }
 
-        Servlet servlet = null;
+        Servlet servlet;
 
         try {
             servlet = (Servlet) myClass.newInstance();
-            servlet.service((ServletRequest) request, (ServletResponse) response);
-        } catch (InstantiationException | IllegalAccessException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ServletException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
+            servlet.service(request, response);
+        } catch (InstantiationException | IllegalAccessException | ServletException | IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }

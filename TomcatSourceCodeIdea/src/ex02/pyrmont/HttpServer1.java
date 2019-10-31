@@ -28,7 +28,7 @@ public class HttpServer1 {
         httpServer.await();
     }
 
-    public void await() {
+    private void await() {
         ServerSocket serverSocket = null;
         int port = 10001;
 

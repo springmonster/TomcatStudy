@@ -42,9 +42,9 @@ public class HttpServer {
         }
 
         while (!shutdown) {
-            Socket socket = null;
-            InputStream inputStream = null;
-            OutputStream outputStream = null;
+            Socket socket;
+            InputStream inputStream;
+            OutputStream outputStream;
 
             try {
                 socket = serverSocket.accept();

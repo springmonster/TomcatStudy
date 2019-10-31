@@ -20,7 +20,7 @@ public class Response implements ServletResponse {
         this.request = request;
     }
 
-    public void sendStaticResource() throws IOException {
+    void sendStaticResource() throws IOException {
         // find
         byte[] bytes = new byte[BUFFER_SIZE];
         FileInputStream fileInputStream = null;
