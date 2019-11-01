@@ -110,7 +110,7 @@ public class SocketInputStream extends InputStream {
             requestLine.recycle();
 
         // Checking for a blank line
-        int chr = 0;
+        int chr;
         do { // Skipping CR or LF
             try {
                 chr = read();

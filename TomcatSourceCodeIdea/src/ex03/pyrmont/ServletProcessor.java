@@ -34,16 +34,14 @@ public class ServletProcessor {
             System.out.println(e.toString());
         }
 
-        Servlet servlet = null;
+        Servlet servlet;
 
         try {
             servlet = (Servlet) myClass.newInstance();
             HttpRequestFacade requestFacade = new HttpRequestFacade(request);
             HttpResponseFacade responseFacade = new HttpResponseFacade(response);
             servlet.service(requestFacade, responseFacade);
-            ((HttpResponse) response).finishResponse();
-        } catch (Exception e) {
-            System.out.println(e.toString());
+            response.finishResponse();
         } catch (Throwable e) {
             System.out.println(e.toString());
         }

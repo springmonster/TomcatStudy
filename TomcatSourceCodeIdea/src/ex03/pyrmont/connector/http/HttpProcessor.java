@@ -35,8 +35,8 @@ public class HttpProcessor {
     protected StringManager sm = StringManager.getManager("ex03.pyrmont.connector.http");
 
     public void process(Socket socket) {
-        SocketInputStream input = null;
-        OutputStream output = null;
+        SocketInputStream input;
+        OutputStream output;
         try {
             input = new SocketInputStream(socket.getInputStream(), 2048);
             output = socket.getOutputStream();
@@ -190,12 +190,12 @@ public class HttpProcessor {
         String normalizedUri = normalize(uri);
 
         // Set the corresponding request properties
-        ((HttpRequest) request).setMethod(method);
+        request.setMethod(method);
         request.setProtocol(protocol);
         if (normalizedUri != null) {
-            ((HttpRequest) request).setRequestURI(normalizedUri);
+            request.setRequestURI(normalizedUri);
         } else {
-            ((HttpRequest) request).setRequestURI(uri);
+            request.setRequestURI(uri);
         }
 
         if (normalizedUri == null) {
